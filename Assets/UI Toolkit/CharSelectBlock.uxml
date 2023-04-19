@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/CharSelectBlockSS.uss?fileID=7433441132597879392&amp;guid=bd27e97888b9b334991c410d64852bd5&amp;type=3#CharSelectBlockSS" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-self: center; justify-content: space-between; align-items: center; flex-direction: column-reverse; width: 1486px;">
+        <ui:GroupBox name="GroupBox" style="height: 442px; top: 194px; position: absolute; left: 56px; flex-direction: row; justify-content: space-around; align-items: flex-start; align-self: flex-end; -unity-background-image-tint-color: rgb(26, 17, 17); background-color: rgba(53, 45, 45, 0.96); right: 63px;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="Select1" class="charButton" />
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="Select2" class="charButton" />
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="Select3" class="charButton" style="background-image: none;" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

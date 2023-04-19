@@ -1,0 +1,19 @@
+.charButton {
+    width: 400px;
+    height: 400px;
+    border-left-width: 5px;
+    border-right-width: 8px;
+    border-top-width: 8px;
+    border-bottom-width: 5px;
+    border-left-color: rgb(35, 128, 4);
+    border-right-color: rgb(35, 128, 4);
+    border-top-color: rgb(35, 128, 4);
+    border-bottom-color: rgb(35, 128, 4);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    align-self: center;
+    justify-content: flex-end;
+    align-items: stretch;
+}
