@@ -19,10 +19,6 @@ public class JobsSystem : MonoBehaviour
 
 	private bool _jobsWorking = false;
 
-	private void Awake()
-	{
-	}
-
 	private void Update()
 	{
 		if (RosterManager.Instance.AnyAssignedJobs() && !_jobsWorking)
@@ -31,7 +27,11 @@ public class JobsSystem : MonoBehaviour
 			TimeTickSystem.OnTick += RunJobs_OnTick;
 		}
 		else if (!RosterManager.Instance.AnyAssignedJobs())
+		{
+			_jobsWorking = false;
 			TimeTickSystem.OnTick -= RunJobs_OnTick;
+			// maybe passive reduce suspicion while running no jobs?
+		}
 	}
 
 	private void RunJobs_OnTick(object sender, TimeTickSystem.OnTickEventArgs e)
