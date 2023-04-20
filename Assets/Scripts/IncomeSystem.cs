@@ -25,11 +25,20 @@ public class IncomeSystem : MonoBehaviour
 	{
 		if (job == Job.PickPocket)
 		{
-			float result = ((float)(Random.Range(3f, 10f)));
-			_currentCash += result;
-			Debug.Log(result);
+			_currentCash += CalculateIncomeResult(3f, 10f);
 		}
-		//Debug.Log("cash " + _currentCash);
+		else if (job == Job.Hacker)
+		{
+			_currentCash += CalculateIncomeResult(10f, 20f);
+		}
+
 		_cashDisplay.text = _currentCash.ToString("c2");
+	}
+
+	private float CalculateIncomeResult(float min, float max)
+	{
+		float result = Random.Range(min, max);
+		Debug.Log(result);
+		return result;
 	}
 }

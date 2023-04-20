@@ -12,6 +12,31 @@ public class JobsSystem : MonoBehaviour
 	// each success returns cash
 	// each failure returns suspicion
 
+	// TODO - NEED TO ADJUST ALL VALUES
+	// SOME JOBS SHOULD WORK ON LONGER TICKS
+
+	// Each job needs its own pros/cons.
+	// Pick Pocket: 
+	// quick completion time
+	// low suspicion
+	// low reward
+	// average success rate
+	// Hacking
+	// lower success rate
+	// higher reward
+	// low suspicion
+	// slower completion time?
+	// Mugging: 
+	// fast completion
+	// high suspicion
+	// high reward
+	// average success?
+	// Con Artist:
+	// longest completion
+	// highest reward
+	// average suspicion
+	// average success rate?
+
 	const float BASE_SUCCESS_RATE = 20f;
 
 	public static event Action<Job> JobAttemptSuccess;
@@ -37,6 +62,8 @@ public class JobsSystem : MonoBehaviour
 	private void RunJobs_OnTick(object sender, TimeTickSystem.OnTickEventArgs e)
 	{
 		ProcessPickPocketJobs();
+		if (TimeTickSystem.GetTick() % 3 == 0)
+			ProcessHackerJobs();
 	}
 
 	private void ProcessPickPocketJobs()
@@ -54,12 +81,38 @@ public class JobsSystem : MonoBehaviour
 				if (success + check >= 100)
 				{
 					JobAttemptSuccess?.Invoke(Job.PickPocket);
-					Debug.Log($"{c.Name} job completed successfully");
+					Debug.Log($"{c.Name} Pick Pocket completed successfully");
 				}
 				else
 				{
 					JobAttemptFailure?.Invoke(Job.PickPocket);
-					Debug.Log($"{c.Name} job was a failure");
+					Debug.Log($"{c.Name} Pick Pocket was a failure");
+				}
+			}
+		}
+	}
+
+	private void ProcessHackerJobs()
+	{
+		List<Criminal> tempList = new List<Criminal>();
+		tempList = RosterManager.Instance.GetRoster(Job.Hacker);
+
+		if (tempList.Count > 0)
+		{
+			foreach (Criminal c in tempList)
+			{
+				float success = BASE_SUCCESS_RATE + c.Tech;
+				float check = Random.Range(1, 100);
+
+				if (success + check >= 100)
+				{
+					JobAttemptSuccess?.Invoke(Job.Hacker);
+					Debug.Log($"{c.Name} Hack completed successfully");
+				}
+				else
+				{
+					JobAttemptFailure?.Invoke(Job.Hacker);
+					Debug.Log($"{c.Name} Hack was a failure");
 				}
 			}
 		}

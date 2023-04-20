@@ -123,6 +123,7 @@ public class RosterManager : MonoBehaviour
 
 	private void UpdateJobRosters(Criminal criminal, Job job)
 	{
+		RemoveFromAllJobs(criminal);
 		switch (job)
 		{
 			case Job.PickPocket:
