@@ -13710,6 +13710,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cashDisplay: {fileID: 965377506}
+  PickPocketIncome:
+    min: 3
+    max: 10
+  HackerIncome:
+    min: 8
+    max: 22
+  MuggerIncome:
+    min: 20
+    max: 35
+  ConArtistIncome:
+    min: 50
+    max: 100
 --- !u!1 &1015496327
 GameObject:
   m_ObjectHideFlags: 0

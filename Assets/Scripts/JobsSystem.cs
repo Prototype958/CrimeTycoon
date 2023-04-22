@@ -61,60 +61,58 @@ public class JobsSystem : MonoBehaviour
 
 	private void RunJobs_OnTick(object sender, TimeTickSystem.OnTickEventArgs e)
 	{
-		ProcessPickPocketJobs();
+		// ProcessPickPocketJobs();
+		// if (TimeTickSystem.GetTick() % 3 == 0)
+		// 	ProcessHackerJobs();
+
+		ProcessJob(Job.PickPocket);
 		if (TimeTickSystem.GetTick() % 3 == 0)
-			ProcessHackerJobs();
+			ProcessJob(Job.Hacker);
+		if (TimeTickSystem.GetTick() % 6 == 0)
+			ProcessJob(Job.Mugger);
+		if (TimeTickSystem.GetTick() % 10 == 0)
+			ProcessJob(Job.ConArtist);
 	}
 
-	private void ProcessPickPocketJobs()
+	private void ProcessJob(Job job)
 	{
 		List<Criminal> tempList = new List<Criminal>();
-		tempList = RosterManager.Instance.GetRoster(Job.PickPocket);
+		tempList = RosterManager.Instance.GetRoster(job);
 
 		if (tempList.Count > 0)
 		{
 			foreach (Criminal c in tempList)
 			{
-				float success = BASE_SUCCESS_RATE + c.Stealth;
+				float success = BASE_SUCCESS_RATE + GetSuccessMod(c, job);
 				float check = Random.Range(1, 100);
 
 				if (success + check >= 100)
 				{
-					JobAttemptSuccess?.Invoke(Job.PickPocket);
-					Debug.Log($"{c.Name} Pick Pocket completed successfully");
+					JobAttemptSuccess?.Invoke(job);
+					Debug.Log($"{c.Name} {job} completed successfully");
 				}
 				else
 				{
-					JobAttemptFailure?.Invoke(Job.PickPocket);
-					Debug.Log($"{c.Name} Pick Pocket was a failure");
+					JobAttemptFailure?.Invoke(job);
+					Debug.Log($"{c.Name} {job} was a failure");
 				}
 			}
 		}
 	}
 
-	private void ProcessHackerJobs()
+	private float GetSuccessMod(Criminal c, Job j)
 	{
-		List<Criminal> tempList = new List<Criminal>();
-		tempList = RosterManager.Instance.GetRoster(Job.Hacker);
+		float mod = 0;
 
-		if (tempList.Count > 0)
-		{
-			foreach (Criminal c in tempList)
-			{
-				float success = BASE_SUCCESS_RATE + c.Tech;
-				float check = Random.Range(1, 100);
+		if (j == Job.PickPocket)
+			mod = c.Stealth;
+		else if (j == Job.Hacker)
+			mod = c.Tech;
+		else if (j == Job.Mugger)
+			mod = c.Power;
+		else if (j == Job.ConArtist)
+			mod = c.Charm;
 
-				if (success + check >= 100)
-				{
-					JobAttemptSuccess?.Invoke(Job.Hacker);
-					Debug.Log($"{c.Name} Hack completed successfully");
-				}
-				else
-				{
-					JobAttemptFailure?.Invoke(Job.Hacker);
-					Debug.Log($"{c.Name} Hack was a failure");
-				}
-			}
-		}
+		return mod;
 	}
 }
