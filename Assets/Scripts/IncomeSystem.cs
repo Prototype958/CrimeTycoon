@@ -1,19 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Random = UnityEngine.Random;
 
+// Calculate and manage income and current cash
 public class IncomeSystem : MonoBehaviour
 {
-	// calculate and manage income and current cash
+	public static IncomeSystem Instance;
+
 	// References
 	[SerializeField]
 	private TextMeshProUGUI _cashDisplay;
 
 	// Properties
 	private float _currentCash = 0.00f;
+
+	public float CurrentCash => _currentCash;
 
 	[SerializeField] private Income<Job> PickPocketIncome;
 	[SerializeField] private Income<Job> HackerIncome;
@@ -22,20 +24,38 @@ public class IncomeSystem : MonoBehaviour
 
 	private void Awake()
 	{
+		if (Instance != null && Instance != this)
+			Destroy(this);
+		else
+			Instance = this;
+
 		JobsSystem.JobAttemptSuccess += HandleJobIncome;
+		Upgrade.ApplyUpgrade += ModifyIncome;
 		_cashDisplay.text = "$0.00";
+	}
+
+	private void ModifyIncome(Job arg1, Stat arg2, float arg3, float cost)
+	{
+		_currentCash -= cost;
 	}
 
 	private void HandleJobIncome(Job job)
 	{
-		if (job == Job.PickPocket)
-			_currentCash += CalculateIncomeResult(PickPocketIncome.Min, PickPocketIncome.Max);
-		else if (job == Job.Hacker)
-			_currentCash += CalculateIncomeResult(HackerIncome.Min, HackerIncome.Max);
-		else if (job == Job.Mugger)
-			_currentCash += CalculateIncomeResult(MuggerIncome.Min, MuggerIncome.Max);
-		else if (job == Job.ConArtist)
-			_currentCash += CalculateIncomeResult(ConArtistIncome.Min, ConArtistIncome.Max);
+		switch (job)
+		{
+			case Job.PickPocket:
+				_currentCash += CalculateIncomeResult(PickPocketIncome.Min, PickPocketIncome.Max);
+				break;
+			case Job.Hacker:
+				_currentCash += CalculateIncomeResult(HackerIncome.Min, HackerIncome.Max);
+				break;
+			case Job.Mugger:
+				_currentCash += CalculateIncomeResult(MuggerIncome.Min, MuggerIncome.Max);
+				break;
+			case Job.ConArtist:
+				_currentCash += CalculateIncomeResult(ConArtistIncome.Min, ConArtistIncome.Max);
+				break;
+		}
 
 		_cashDisplay.text = _currentCash.ToString("c2");
 	}
@@ -51,6 +71,7 @@ public class IncomeSystem : MonoBehaviour
 [Serializable]
 public class Income<T>
 {
+	// Values initialized in editor
 	[SerializeField]
 	private float min;
 	[SerializeField]
@@ -58,12 +79,6 @@ public class Income<T>
 
 	public float Min { get { return min; } set { min = value; } }
 	public float Max { get { return max; } set { max = value; } }
-
-	// public Income(float _min, float _max)
-	// {
-	// 	min = _min;
-	// 	max = _max;
-	// }
 
 	public void UpdateIncome(float _newMin, float _newMax)
 	{

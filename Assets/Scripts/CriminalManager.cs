@@ -58,19 +58,19 @@ public class CriminalManager : MonoBehaviour
 		{
 			Debug.Log("building");
 			SingleNameOptions = new List<string>();
-			SingleNameOptions = ParseFile("Assets/SingleNames.txt");
+			SingleNameOptions = ParseFile("Assets/Resources/SingleNames.txt");
 		}
 
 		if (TwoNameOptions == null)
 		{
 			TwoNameOptions = new List<string>();
-			TwoNameOptions = ParseFile("Assets/TwoNames.txt");
+			TwoNameOptions = ParseFile("Assets/Resources/TwoNames.txt");
 		}
 
 		if (ComplexNameOptions == null)
 		{
 			ComplexNameOptions = new List<string>();
-			ComplexNameOptions = ParseFile("Assets/ComplexNames.txt");
+			ComplexNameOptions = ParseFile("Assets/Resources/ComplexNames.txt");
 		}
 	}
 

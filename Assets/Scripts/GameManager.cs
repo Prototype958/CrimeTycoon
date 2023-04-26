@@ -23,9 +23,8 @@ public class GameManager : MonoBehaviour
 			Instance = this;
 
 		// Set up event listeners
-		/*
-        UpgradeSystem.Upgraded += ApplyUpgrade;
-        */
+		Upgrade.ApplyUpgrade += ApplyUpgrade;
+		Upgrade.Apply2 += Apply2;
 
 		TimeTickSystem.Create(this.gameObject);
 		TimeTickSystem.OnTick += delegate (object sender, TimeTickSystem.OnTickEventArgs e)
@@ -40,8 +39,12 @@ public class GameManager : MonoBehaviour
 
 	// set this up to be called when an upgrade is purchased
 	// pass in upgrade to be applied, call appripriate function based on upgrade
-	private void ApplyUpgrade(string upgrade)
+	private void ApplyUpgrade(Job job, Stat stat, float value, float cost)
 	{
+		Debug.Log($"Upgrade {job} {stat} by {value}");
+	}
 
+	private void Apply2(Upgrade u)
+	{
 	}
 }
