@@ -11,13 +11,6 @@ public class UpgradeButton : MonoBehaviour
 	public TextMeshProUGUI CostDisplay;
 	public TextMeshProUGUI DescDisplay;
 
-	private void Awake()
-	{
-		//Upgrade = Resources.Load<Upgrade>("Upgrades/PickPocketSpd1");
-
-
-	}
-
 	public void AssignUpgrade(Upgrade u)
 	{
 		Upgrade = u;

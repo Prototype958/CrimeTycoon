@@ -54,6 +54,7 @@ public enum Stat
 	CompletionSpeed,
 	SuccessRate,
 	SuspicionGain,
-	IncomeGain
+	IncomeGain,
+	Unlock
 }
 

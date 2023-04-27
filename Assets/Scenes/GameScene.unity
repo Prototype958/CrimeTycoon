@@ -7198,20 +7198,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635497826}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1596006514}
-  m_Father: {fileID: 976430597}
+  m_Father: {fileID: 1749957123}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &642842887
 GameObject:
   m_ObjectHideFlags: 0
@@ -7941,7 +7941,7 @@ GameObject:
   - component: {fileID: 743287068}
   - component: {fileID: 743287067}
   m_Layer: 0
-  m_Name: Button
+  m_Name: RecruitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8012,7 +8012,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 743287068}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1596006519}
+        m_TargetAssemblyTypeName: CharSelectManager, Assembly-CSharp
+        m_MethodName: ToggleCharSelectorDisplay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &743287068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10389,7 +10401,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1759557301}
-  - {fileID: 635497830}
   - {fileID: 1910546377}
   - {fileID: 1821244139}
   - {fileID: 425330424}
@@ -13267,6 +13278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cccb6ae115b444ab316067343caf8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _recruitCost: 0
 --- !u!1 &1376301982
 GameObject:
   m_ObjectHideFlags: 0
@@ -14461,6 +14473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52af2268cfa96bd43ae2dc9fd2c3d394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickpocketspeed: 5
 --- !u!1 &1485397188
 GameObject:
   m_ObjectHideFlags: 0
@@ -15554,7 +15567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardPrefab: {fileID: 8226678287742137603, guid: 42b6a464a1da181489aa71bfdf1daeed, type: 3}
-  StatCard: []
+  StatCards: []
 --- !u!1 &1634376836
 GameObject:
   m_ObjectHideFlags: 0
@@ -16217,6 +16230,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 660605494}
+  - {fileID: 635497830}
   m_Father: {fileID: 976430597}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16458,7 +16472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1759557298
 MonoBehaviour:
   m_ObjectHideFlags: 0

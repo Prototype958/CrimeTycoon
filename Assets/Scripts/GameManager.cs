@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
 
+	public static event Action<Job> EnableJob;
+
 	// Public properties
 	public int MaxRosterSize { get { return _maxRosterSize; } set { _maxRosterSize = value; } }
 	public int CurrentRosterSize { get { return _currentRosterSize; } set { _currentRosterSize = value; } }
@@ -14,6 +17,10 @@ public class GameManager : MonoBehaviour
 	// Private variables
 	private int _maxRosterSize;
 	private int _currentRosterSize;
+
+	[SerializeField] private float _recruitCost;
+
+	public float RecruitCost => _recruitCost;
 
 	public void Awake()
 	{
@@ -42,6 +49,11 @@ public class GameManager : MonoBehaviour
 	private void ApplyUpgrade(Job job, Stat stat, float value, float cost)
 	{
 		Debug.Log($"Upgrade {job} {stat} by {value}");
+
+		if (stat == Stat.Unlock)
+		{
+			EnableJob?.Invoke(job);
+		}
 	}
 
 	private void Apply2(Upgrade u)

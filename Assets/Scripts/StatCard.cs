@@ -28,7 +28,7 @@ public class StatCard : MonoBehaviour
 		UpdateStatBlocks();
 	}
 
-	public void DoThisOnClick()
+	public void RecruitCriminal()
 	{
 		if (RosterManager.Instance.UpdateCurrentRosterSize(1))
 		{

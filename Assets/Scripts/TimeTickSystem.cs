@@ -7,14 +7,17 @@ public static class TimeTickSystem
 {
 	public class OnTickEventArgs : EventArgs
 	{
-		public int tick;
+		public float tick;
 	}
 
 	public static event EventHandler<OnTickEventArgs> OnTick;
 
-	private const float TICK_TIMER_MAX = 1f;
+	// Set tick time to 1/4 second
+	// This allows for a larger variety in completion times
+	// and speed upgrades.
+	private const float TICK_TIMER_MAX = .25f;
 
-	private static int _tick;
+	private static float _tick;
 	private static GameObject timeTickSystemObject;
 
 	public static void Create(GameObject parent)
@@ -27,7 +30,7 @@ public static class TimeTickSystem
 		}
 	}
 
-	public static int GetTick()
+	public static float GetTick()
 	{
 		return _tick;
 	}
@@ -47,7 +50,7 @@ public static class TimeTickSystem
 			if (_tickTimer >= TICK_TIMER_MAX)
 			{
 				_tickTimer -= TICK_TIMER_MAX;
-				_tick++;
+				_tick += 0.25f;
 				OnTick?.Invoke(this, new OnTickEventArgs { tick = _tick });
 			}
 		}

@@ -34,9 +34,28 @@ public class IncomeSystem : MonoBehaviour
 		_cashDisplay.text = "$0.00";
 	}
 
+	//
+	// This is really really ugly, please fix it
+	//
 	private void ModifyIncome(Job arg1, Stat arg2, float arg3, float cost)
 	{
 		_currentCash -= cost;
+	}
+
+	public void Spend(float cost)
+	{
+		_currentCash -= cost;
+	}
+
+	public bool CanAfford(float cost)
+	{
+		if (cost <= _currentCash)
+		{
+			return true;
+		}
+		else
+			return false;
+
 	}
 
 	private void HandleJobIncome(Job job)

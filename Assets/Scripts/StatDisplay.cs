@@ -17,6 +17,15 @@ public class StatDisplay : MonoBehaviour
 
 	public static event Action<Criminal, Job> JobUpdated;
 
+	private void Awake()
+	{
+		GameManager.EnableJob += EnableJobToggle;
+
+		_hackerToggle.interactable = false;
+		_muggerToggle.interactable = false;
+		_conArtistToggle.interactable = false;
+	}
+
 	public void Update()
 	{
 		// replace with "X" to close button eventually
@@ -26,9 +35,19 @@ public class StatDisplay : MonoBehaviour
 		}
 	}
 
+	private void EnableJobToggle(Job job)
+	{
+		if (job == Job.Hacker)
+			_hackerToggle.interactable = true;
+		if (job == Job.Mugger)
+			_muggerToggle.interactable = true;
+		if (job == Job.ConArtist)
+			_conArtistToggle.interactable = true;
+	}
+
 	public void UpdateDisplay(Criminal criminal)
 	{
-
+		// Realtime updating as stats change
 	}
 
 	public void ToggleActive(Criminal criminal)

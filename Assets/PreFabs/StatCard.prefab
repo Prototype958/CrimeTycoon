@@ -228,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8b86851a9333a4497d77f8f94a3b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stats: {fileID: 0}
   BackGroundImage: {fileID: 0}
   sprite: {fileID: 1846828900, guid: 6b080fb9bcc732143927b3883bd8e11f, type: 3}
   _powerValueField: {fileID: 1165822174080801252}
@@ -282,7 +281,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8226678287742137603}
         m_TargetAssemblyTypeName: StatCard, Assembly-CSharp
-        m_MethodName: DoThisOnClick
+        m_MethodName: RecruitCriminal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

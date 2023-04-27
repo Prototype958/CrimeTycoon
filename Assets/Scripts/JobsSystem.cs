@@ -42,6 +42,8 @@ public class JobsSystem : MonoBehaviour
 	public static event Action<Job> JobAttemptSuccess;
 	public static event Action<Job> JobAttemptFailure;
 
+	public float pickpocketspeed = 5;
+
 	private bool _jobsWorking = false;
 
 	private void Update()
@@ -61,11 +63,8 @@ public class JobsSystem : MonoBehaviour
 
 	private void RunJobs_OnTick(object sender, TimeTickSystem.OnTickEventArgs e)
 	{
-		// ProcessPickPocketJobs();
-		// if (TimeTickSystem.GetTick() % 3 == 0)
-		// 	ProcessHackerJobs();
-
-		ProcessJob(Job.PickPocket);
+		if (TimeTickSystem.GetTick() % 1 == 0)
+			ProcessJob(Job.PickPocket);
 		if (TimeTickSystem.GetTick() % 3 == 0)
 			ProcessJob(Job.Hacker);
 		if (TimeTickSystem.GetTick() % 6 == 0)
@@ -89,12 +88,12 @@ public class JobsSystem : MonoBehaviour
 				if (success + check >= 100)
 				{
 					JobAttemptSuccess?.Invoke(job);
-					Debug.Log($"{c.Name} {job} completed successfully");
+					//Debug.Log($"{c.Name} {job} completed successfully");
 				}
 				else
 				{
 					JobAttemptFailure?.Invoke(job);
-					Debug.Log($"{c.Name} {job} was a failure");
+					//Debug.Log($"{c.Name} {job} was a failure");
 				}
 			}
 		}
