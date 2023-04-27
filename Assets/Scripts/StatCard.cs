@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 using TMPro;
-using UnityEditor;
 using UnityEngine.UI;
 
+// Stat card for the Select New Criminal/Henchman
 public class StatCard : MonoBehaviour
 {
 	public static event Action<Criminal> RosterUpdated;
@@ -12,8 +12,7 @@ public class StatCard : MonoBehaviour
 	public Sprite sprite;
 
 	// Assign Reference to all Stat Values
-	[SerializeField]
-	private TextMeshProUGUI _powerValueField, _stealthValueField, _techValueField, _charmValueField, _nameField;
+	[SerializeField] private TextMeshProUGUI _powerValueField, _stealthValueField, _techValueField, _charmValueField, _nameField;
 
 	private Criminal _criminal;
 

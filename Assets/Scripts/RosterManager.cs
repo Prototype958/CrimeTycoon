@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class RosterManager : MonoBehaviour
 {
@@ -31,8 +29,7 @@ public class RosterManager : MonoBehaviour
 	private RosterSize Roster;
 	private List<Criminal> _mainRoster, _pickPocketRoster, _hackerRoster, _muggerRoster, _conArtistRoster;
 
-	[SerializeField]
-	private TextMeshProUGUI _count;
+	[SerializeField] private TextMeshProUGUI _count;
 
 	public void Awake()
 	{
@@ -47,7 +44,7 @@ public class RosterManager : MonoBehaviour
 
 		// Initialization
 		Roster = new RosterSize(2, 0);
-		_count.text = GetRosterDisplay();
+		UpdateRosterSizeDisplay();
 
 		// Lists of criminals and assignments
 		_mainRoster = new List<Criminal>();
@@ -98,7 +95,7 @@ public class RosterManager : MonoBehaviour
 		if (Roster.current < Roster.max)
 		{
 			Roster.current += i;
-			_count.text = GetRosterDisplay();
+			UpdateRosterSizeDisplay();
 			return true;
 		}
 		else
@@ -111,7 +108,7 @@ public class RosterManager : MonoBehaviour
 	public void UpdateMaxRosterSize(int i)
 	{
 		Roster.max += i;
-		_count.text = GetRosterDisplay();
+		UpdateRosterSizeDisplay();
 	}
 
 	private void AddToDisplay(Criminal criminal)
@@ -178,9 +175,9 @@ public class RosterManager : MonoBehaviour
 		return Roster.max;
 	}
 
-	public string GetRosterDisplay()
+	private void UpdateRosterSizeDisplay()
 	{
-		return $"{Roster.current}/{Roster.max} 'Employees'";
+		_count.text = $"{Roster.current}/{Roster.max} 'Employees'";
 	}
 
 

@@ -6,16 +6,14 @@ using UnityEngine.UI;
 
 public class StatDisplay : MonoBehaviour
 {
-	//references to text fields to update
-	[SerializeField]
-	private TextMeshProUGUI _nameField, _powerField, _stealthField, _techField, _charmField;
-	[SerializeField]
-	private Toggle _pickPocketToggle, _hackerToggle, _muggerToggle, _conArtistToggle;
-	[SerializeField]
-	private ToggleGroup _assignmentOptions;
-	private Criminal _currentCriminal;
-
 	public static event Action<Criminal, Job> JobUpdated;
+
+	//references to text fields to update
+	[SerializeField] private TextMeshProUGUI _nameField, _powerField, _stealthField, _techField, _charmField;
+	[SerializeField] private Toggle _pickPocketToggle, _hackerToggle, _muggerToggle, _conArtistToggle;
+	[SerializeField] private ToggleGroup _assignmentOptions;
+
+	private Criminal _currentCriminal;
 
 	private void Awake()
 	{
@@ -132,7 +130,6 @@ public class StatDisplay : MonoBehaviour
 			// assign selected job to criminal
 			_currentCriminal.CurrentJob = job;
 			JobUpdated?.Invoke(_currentCriminal, job);
-			Debug.Log($"{_currentCriminal.Name} is now a {_currentCriminal.CurrentJob}");
 		}
 	}
 }

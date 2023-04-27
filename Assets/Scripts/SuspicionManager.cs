@@ -5,8 +5,7 @@ public class SuspicionManager : MonoBehaviour
 {
 	[SerializeField] private float _suspicion;
 
-	[SerializeField]
-	private TextMeshProUGUI _suspicionDisplay;
+	[SerializeField] private TextMeshProUGUI _suspicionDisplay;
 
 	private void Awake()
 	{

@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class RosterCard : MonoBehaviour
 {
-	[SerializeField]
-	private TextMeshProUGUI _nameField, _powerField, _stealthField, _techField, _charmField;
+	[SerializeField] private TextMeshProUGUI _nameField, _powerField, _stealthField, _techField, _charmField;
 
-	[SerializeField]
-	public Criminal _criminal;
+	[SerializeField] public Criminal _criminal;
 
 	public void Awake()
 	{

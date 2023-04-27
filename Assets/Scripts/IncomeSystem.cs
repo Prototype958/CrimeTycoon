@@ -9,8 +9,7 @@ public class IncomeSystem : MonoBehaviour
 	public static IncomeSystem Instance;
 
 	// References
-	[SerializeField]
-	private TextMeshProUGUI _cashDisplay;
+	[SerializeField] private TextMeshProUGUI _cashDisplay;
 
 	// Properties
 	private float _currentCash = 0.00f;

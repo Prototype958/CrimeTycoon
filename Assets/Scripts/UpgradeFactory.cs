@@ -6,7 +6,6 @@ using UnityEngine;
 public class Upgrade : ScriptableObject
 {
 	public static event Action<Job, Stat, float, float> ApplyUpgrade;
-	public static event Action<Upgrade> Apply2;
 
 	[SerializeField] private string _name;
 	[SerializeField] private float _cost;
@@ -36,12 +35,6 @@ public class Upgrade : ScriptableObject
 				ApplyUpgrade?.Invoke(j, s, _upgradeValue, _cost);
 			}
 		}
-	}
-
-	public void Purchase2()
-	{
-
-		Apply2?.Invoke(this);
 	}
 }
 

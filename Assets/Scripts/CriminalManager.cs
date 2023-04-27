@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,8 +7,7 @@ public class CriminalManager : MonoBehaviour
 {
 	public static CriminalManager Instance;
 
-	[SerializeField]
-	private StatDisplay DisplayCard;
+	[SerializeField] private StatDisplay DisplayCard;
 
 	private List<string> SingleNameOptions;
 	private List<string> TwoNameOptions;
@@ -56,7 +54,6 @@ public class CriminalManager : MonoBehaviour
 	{
 		if (SingleNameOptions == null)
 		{
-			Debug.Log("building");
 			SingleNameOptions = new List<string>();
 			SingleNameOptions = ParseFile("Assets/Resources/SingleNames.txt");
 		}
@@ -123,9 +120,3 @@ public class CriminalManager : MonoBehaviour
 		return name;
 	}
 }
-
-// When criminal picker panel is pulled up
-//  Generate 3 criminals, add to temp list List<Criminal> _pickList
-//  send pickList to UI, UI manager builds stat cards and displays
-//  when criminal is picked, return selection to criminalManager
-//  add selected to roster, List<Criminal> _currentRoster

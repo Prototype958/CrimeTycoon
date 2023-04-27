@@ -88,12 +88,10 @@ public class JobsSystem : MonoBehaviour
 				if (success + check >= 100)
 				{
 					JobAttemptSuccess?.Invoke(job);
-					//Debug.Log($"{c.Name} {job} completed successfully");
 				}
 				else
 				{
 					JobAttemptFailure?.Invoke(job);
-					//Debug.Log($"{c.Name} {job} was a failure");
 				}
 			}
 		}
