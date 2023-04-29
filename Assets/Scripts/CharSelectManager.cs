@@ -5,7 +5,7 @@ public class CharSelectManager : MonoBehaviour
 	public StatCard CardPrefab;
 	public StatCard[] StatCards;
 
-	private bool toggle = false;
+	[SerializeField] private GameObject _blocker;
 
 	public void Awake()
 	{
@@ -13,14 +13,12 @@ public class CharSelectManager : MonoBehaviour
 
 		StatCard.RosterUpdated += DisablePanel;
 	}
-
-	public void DisablePanel(Criminal c)
-	{
-		ToggleCharSelectorDisplay();
-	}
+	public void ToggleDisplay() => this.gameObject.SetActive(!gameObject.activeSelf);
+	public void DisablePanel(Criminal c) => ToggleDisplay();
 
 	public void OnEnable()
 	{
+		_blocker.SetActive(true);
 		for (int i = 0; i < StatCards.Length; i++)
 		{
 			StatCards[i] = Instantiate(CardPrefab, this.transform);
@@ -29,19 +27,11 @@ public class CharSelectManager : MonoBehaviour
 
 	public void OnDisable()
 	{
+		_blocker.SetActive(false);
 		foreach (StatCard card in StatCards)
 		{
 			if (card != null)
 				Destroy(card.gameObject);
-		}
-	}
-
-	public void ToggleCharSelectorDisplay()
-	{
-		if (IncomeSystem.Instance.CanAfford(GameManager.Instance.RecruitCost))
-		{
-			IncomeSystem.Instance.Spend(GameManager.Instance.RecruitCost);
-			this.gameObject.SetActive(toggle = !toggle);
 		}
 	}
 }

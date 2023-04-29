@@ -3,6 +3,8 @@ using TMPro;
 
 public class UpgradeButton : MonoBehaviour
 {
+	public static event System.Action<Upgrade> UpgradePurchased;
+
 	// Upgrade Scriptable Object reference
 	public Upgrade Upgrade;
 
@@ -22,8 +24,9 @@ public class UpgradeButton : MonoBehaviour
 
 	public void PurchaseUpgrade()
 	{
-		if (IncomeSystem.Instance.CurrentCash >= Upgrade.Cost)
-			Upgrade.Purchase();
+		if (IncomeSystem.Instance.CanAfford(Upgrade.Cost))
+			//Upgrade.Purchase();
+			UpgradePurchased?.Invoke(Upgrade);
 		else
 			Debug.Log("aint no money");
 	}

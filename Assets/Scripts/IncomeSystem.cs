@@ -29,7 +29,6 @@ public class IncomeSystem : MonoBehaviour
 			Instance = this;
 
 		JobsSystem.JobAttemptSuccess += HandleJobIncome;
-		Upgrade.ApplyUpgrade += ModifyIncome;
 		_cashDisplay.text = "$0.00";
 	}
 
@@ -39,12 +38,16 @@ public class IncomeSystem : MonoBehaviour
 	private void ModifyIncome(Job arg1, Stat arg2, float arg3, float cost)
 	{
 		_currentCash -= cost;
+		UpdatateCashDisplay();
 	}
 
 	public void Spend(float cost)
 	{
 		_currentCash -= cost;
+		UpdatateCashDisplay();
 	}
+
+	private void UpdatateCashDisplay() => _cashDisplay.text = _currentCash.ToString("c2");
 
 	public bool CanAfford(float cost)
 	{
@@ -54,10 +57,9 @@ public class IncomeSystem : MonoBehaviour
 		}
 		else
 			return false;
-
 	}
 
-	private void HandleJobIncome(Job job)
+	private void HandleJobIncome2(Job job)
 	{
 		switch (job)
 		{
@@ -75,7 +77,28 @@ public class IncomeSystem : MonoBehaviour
 				break;
 		}
 
-		_cashDisplay.text = _currentCash.ToString("c2");
+		UpdatateCashDisplay();
+	}
+
+	private void HandleJobIncome(Job job)
+	{
+		switch (job)
+		{
+			case Job.PickPocket:
+				_currentCash += CalculateIncomeResult(GameManager.Instance.PickPocket.Income.Min, GameManager.Instance.PickPocket.Income.Max);
+				break;
+			case Job.Hacker:
+				_currentCash += CalculateIncomeResult(HackerIncome.Min, HackerIncome.Max);
+				break;
+			case Job.Mugger:
+				_currentCash += CalculateIncomeResult(MuggerIncome.Min, MuggerIncome.Max);
+				break;
+			case Job.ConArtist:
+				_currentCash += CalculateIncomeResult(ConArtistIncome.Min, ConArtistIncome.Max);
+				break;
+		}
+
+		UpdatateCashDisplay();
 	}
 
 	private float CalculateIncomeResult(float min, float max)
@@ -103,5 +126,4 @@ public class Income<T>
 		min = _newMin;
 		max = _newMax;
 	}
-
 }

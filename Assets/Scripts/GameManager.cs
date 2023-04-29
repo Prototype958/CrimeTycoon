@@ -1,23 +1,18 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
 
-	public static event Action<Job> EnableJob;
+	[SerializeField] private List<Upgrade> _upgradesPurchased;
 
-	// Public properties
-	public int MaxRosterSize { get { return _maxRosterSize; } set { _maxRosterSize = value; } }
-	public int CurrentRosterSize { get { return _currentRosterSize; } set { _currentRosterSize = value; } }
-
-	// Private variables
-	private int _maxRosterSize;
-	private int _currentRosterSize;
-
-	[SerializeField] private float _recruitCost;
-
-	public float RecruitCost => _recruitCost;
+	// Job Objects
+	public JobStats PickPocket;
+	public JobStats Hacker;
+	public JobStats Mugger;
+	public JobStats ConArtist;
 
 	public void Awake()
 	{
@@ -27,28 +22,23 @@ public class GameManager : MonoBehaviour
 			Instance = this;
 
 		// Set up event listeners
-		Upgrade.ApplyUpgrade += ApplyUpgrade;
+		UpgradeButton.UpgradePurchased += UpdatePurchasedList;
+
+		_upgradesPurchased = new List<Upgrade>();
 
 		TimeTickSystem.Create(this.gameObject);
-
-		// Set up initial values
-		_maxRosterSize = 2;
-		_currentRosterSize = 0;
 	}
 
 	// set this up to be called when an upgrade is purchased
 	// pass in upgrade to be applied, call appripriate function based on upgrade
-	private void ApplyUpgrade(Job job, Stat stat, float value, float cost)
-	{
-		Debug.Log($"Upgrade {job} {stat} by {value}");
+	// private void ApplyUpgrade(Job job, Stat stat, float value, float cost)
+	// {
+	// 	Debug.Log($"Upgrade {job} {stat} by {value}");
 
-		if (stat == Stat.Unlock)
-		{
-			EnableJob?.Invoke(job);
-		}
-	}
+	// 	if (stat == Stat.Unlock)
+	// 	{
+	// 	}
+	// }
 
-	private void Apply2(Upgrade u)
-	{
-	}
+	private void UpdatePurchasedList(Upgrade u) => _upgradesPurchased.Add(u);
 }

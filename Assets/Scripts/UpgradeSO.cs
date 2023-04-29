@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Upgrades/BaseUpgrade")]
 public class Upgrade : ScriptableObject
 {
-	public static event Action<Job, Stat, float, float> ApplyUpgrade;
-
 	[SerializeField] private string _name;
 	[SerializeField] private float _cost;
 	[SerializeField] private string _description;
@@ -23,19 +21,10 @@ public class Upgrade : ScriptableObject
 
 	[SerializeField] private List<Job> AffectedJobs = new List<Job>();
 	[SerializeField] private List<Stat> StatsToUpgrade = new List<Stat>();
-
 	[SerializeField] private List<Upgrade> preRequisites = new List<Upgrade>();
 
-	public void Purchase()
-	{
-		foreach (Job j in AffectedJobs)
-		{
-			foreach (Stat s in StatsToUpgrade)
-			{
-				ApplyUpgrade?.Invoke(j, s, _upgradeValue, _cost);
-			}
-		}
-	}
+	public List<Job> GetAffectedJobs() => AffectedJobs;
+	public List<Stat> GetStatsToUpgrade() => StatsToUpgrade;
 }
 
 public enum Stat

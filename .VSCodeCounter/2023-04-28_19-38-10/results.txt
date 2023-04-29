@@ -1,0 +1,43 @@
+Date : 2023-04-28 19:38:10
+Directory : c:\Users\proto\CrimeTycoon\Assets\Scripts
+Total : 19 files,  934 codes, 71 comments, 215 blanks, all 1220 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C#       |         19 |        934 |         71 |        215 |      1,220 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                             | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                |         19 |        934 |         71 |        215 |      1,220 |
++------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                         | language | code       | comment    | blank      | total      |
++------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\BuyRecruitButton.cs    | C#       |         15 |          0 |          4 |         19 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\BuyRosterSizeButton.cs | C#       |         14 |          0 |          3 |         17 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\CharSelectManager.cs   | C#       |         31 |          0 |          7 |         38 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\Criminal.cs            | C#       |         55 |          5 |         15 |         75 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\CriminalManager.cs     | C#       |         94 |          7 |         21 |        122 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\GameManager.cs         | C#       |         35 |          6 |         13 |         54 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\IncomeSystem.cs        | C#       |         85 |          7 |         19 |        111 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\InitAllUpgrades.cs     | C#       |         35 |          0 |          9 |         44 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\JobsSystem.cs          | C#       |         70 |          1 |         13 |         84 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\NavigationManager.cs   | C#       |         45 |          1 |          8 |         54 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\RosterCard.cs          | C#       |         23 |          0 |          6 |         29 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\RosterManager.cs       | C#       |        142 |         26 |         33 |        201 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\SceneController.cs     | C#       |         18 |          0 |          5 |         23 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\StatCard.cs            | C#       |         33 |          3 |         11 |         47 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\StatDisplay.cs         | C#       |        111 |          7 |         17 |        135 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\SuspicionManager.cs    | C#       |         16 |          3 |          6 |         25 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\TimeTickSystem.cs      | C#       |         44 |          3 |         10 |         57 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\UpgradeButton.cs       | C#       |         23 |          2 |          6 |         31 |
+| c:\Users\proto\CrimeTycoon\Assets\Scripts\UpgradeFactory.cs      | C#       |         45 |          0 |          9 |         54 |
+| Total                                                            |          |        934 |         71 |        215 |      1,220 |
++------------------------------------------------------------------+----------+------------+------------+------------+------------+

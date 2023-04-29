@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f0aeb3ab0e62544b468116213ceacc, type: 3}
+  m_Script: {fileID: 11500000, guid: a7db14b85dc3ab24db8b203bf3c4036e, type: 3}
   m_Name: HackerSpd1 1
   m_EditorClassIdentifier: 
-  _name: Hacker Speed 1
-  _cost: 30
-  _description: Increases Hacking completion speed
+  _name: Hacking Spd 1
+  _cost: 0
+  _description: Type Faster!
   _isRepeatable: 1
-  _rank: 1
-  _upgradeValue: 0.5
+  _rank: 0
+  _upgradeValue: 0
   AffectedJobs: 02000000
   StatsToUpgrade: 04000000
   preRequisites:

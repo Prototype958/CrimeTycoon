@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f0aeb3ab0e62544b468116213ceacc, type: 3}
+  m_Script: {fileID: 11500000, guid: a7db14b85dc3ab24db8b203bf3c4036e, type: 3}
   m_Name: PickPocketSpd1
   m_EditorClassIdentifier: 
-  _name: PickPocket Speed 1
-  _cost: 20
-  _description: Increases Pick Pocket completion speed
+  _name: Pick Pocket Spd 1
+  _cost: 0
+  _description: Slow is smooth and smooth is fast
   _isRepeatable: 1
   _rank: 1
-  _upgradeValue: 0.5
+  _upgradeValue: 0.25
   AffectedJobs: 01000000
   StatsToUpgrade: 04000000
   preRequisites: []

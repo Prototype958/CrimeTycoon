@@ -38,3 +38,35 @@ You have a few stats
     - Charm: Ability to get people to trust you, pay attention to you, provide distractions, talk your way out of things
  
  */
+
+// When a criminal is added to any job list
+// start their "work"
+// calculate success rate, and work speeds per criminal
+
+// each success returns cash
+// each failure returns suspicion
+
+// TODO - NEED TO ADJUST ALL VALUES
+// SOME JOBS SHOULD WORK ON LONGER TICKS
+
+// Each job needs its own pros/cons.
+// Pick Pocket: 
+// quick completion time
+// low suspicion
+// low reward
+// average success rate
+// Hacking
+// lower success rate
+// higher reward
+// low suspicion
+// slower completion time?
+// Mugging: 
+// fast completion
+// high suspicion
+// high reward
+// average success?
+// Con Artist:
+// longest completion
+// highest reward
+// average suspicion
+// average success rate?

@@ -2,8 +2,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+// Purpose of this class is to track and manage the numerous lists (Rosters)
+// used to identify 
 public class RosterManager : MonoBehaviour
 {
+	// Track current and max size of main roster
 	private struct RosterSize
 	{
 		public int max;
@@ -30,6 +33,7 @@ public class RosterManager : MonoBehaviour
 	private List<Criminal> _mainRoster, _pickPocketRoster, _hackerRoster, _muggerRoster, _conArtistRoster;
 
 	[SerializeField] private TextMeshProUGUI _count;
+	[SerializeField] private float _upgradeCost;
 
 	public void Awake()
 	{
@@ -43,7 +47,7 @@ public class RosterManager : MonoBehaviour
 			Instance = this;
 
 		// Initialization
-		Roster = new RosterSize(2, 0);
+		Roster = new RosterSize(2, 0); // RosterSize(max, cur)
 		UpdateRosterSizeDisplay();
 
 		// Lists of criminals and assignments
@@ -54,6 +58,8 @@ public class RosterManager : MonoBehaviour
 		_conArtistRoster = new List<Criminal>();
 	}
 
+	// Return an individual roster for a specific job
+	// Called in JobSystem.cs
 	public List<Criminal> GetRoster(Job job)
 	{
 		List<Criminal> list = new List<Criminal>();
@@ -77,6 +83,7 @@ public class RosterManager : MonoBehaviour
 		return list;
 	}
 
+	// Check if any jobs currently have criminal assigned
 	public bool AnyAssignedJobs()
 	{
 		if (_pickPocketRoster.Count > 0 ||
@@ -90,34 +97,38 @@ public class RosterManager : MonoBehaviour
 			return false;
 	}
 
-	public bool UpdateCurrentRosterSize(int i)
+	// Increase value representing current members in roster
+	// and update visual display to reflect
+	public void UpdateCurrentRosterSize(int i)
 	{
-		if (Roster.current < Roster.max)
-		{
-			Roster.current += i;
-			UpdateRosterSizeDisplay();
-			return true;
-		}
-		else
-		{
-			// Roster is full, unable to add new member
-			return false;
-		}
+		Roster.current += i;
+		UpdateRosterSizeDisplay();
 	}
 
+	// Increase value representing max members allowed in roster
+	// and update visual display to reflect
 	public void UpdateMaxRosterSize(int i)
 	{
 		Roster.max += i;
 		UpdateRosterSizeDisplay();
 	}
 
+	// New criminal to be added to roster. Instantiate prefab inside selection container
+	// Update appropriate roster display values
+	// Add criminal to main roster
+	// Assign selected criminal to roster card for display on Assignments page
 	private void AddToDisplay(Criminal criminal)
 	{
+		UpdateCurrentRosterSize(1);
+
 		RosterCard = Instantiate(RosterCardPrefab, Container.transform);
 		RosterCard._criminal = criminal;
 		_mainRoster.Add(criminal);
 	}
 
+	// When new job is selected for a criminal, move update/move them to
+	// the correct job specific roster
+	// When no jobs selected, remove from all job specific rosters
 	private void UpdateJobRosters(Criminal criminal, Job job)
 	{
 		RemoveFromAllJobs(criminal);
@@ -141,6 +152,8 @@ public class RosterManager : MonoBehaviour
 		}
 	}
 
+	// Remove from all job rosters.
+	// Necessary for when switching between jobs
 	private void RemoveFromAllJobs(Criminal criminal)
 	{
 		if (_pickPocketRoster.Contains(criminal))
@@ -165,21 +178,23 @@ public class RosterManager : MonoBehaviour
 
 	}
 
-	public int GetCurrentRosterSize()
+	// Return current number of criminals on main roster
+	public int GetCurrentRosterSize() => Roster.current;
+
+	// Return max number of criminals allowed on main roster
+	public int GetMaxRosterSize() => Roster.max;
+
+	// Return whether main roster is currently full
+	public bool IsRosterFull()
 	{
-		return Roster.current;
+		if (Roster.current >= Roster.max)
+			return true;
+		else
+			return false;
 	}
 
-	public int GetMaxRosterSize()
-	{
-		return Roster.max;
-	}
-
-	private void UpdateRosterSizeDisplay()
-	{
-		_count.text = $"{Roster.current}/{Roster.max} 'Employees'";
-	}
-
+	// Update visual text display of current/max roster size
+	private void UpdateRosterSizeDisplay() => _count.text = $"{Roster.current}/{Roster.max} 'Employees'";
 
 }
 

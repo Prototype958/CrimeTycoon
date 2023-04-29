@@ -17,7 +17,9 @@ public class StatDisplay : MonoBehaviour
 
 	private void Awake()
 	{
-		GameManager.EnableJob += EnableJobToggle;
+		JobStats.EnableJob += EnableJobToggle;
+
+		this.gameObject.SetActive(!gameObject.activeSelf);
 
 		_hackerToggle.interactable = false;
 		_muggerToggle.interactable = false;

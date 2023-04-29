@@ -29,16 +29,9 @@ public class StatCard : MonoBehaviour
 
 	public void RecruitCriminal()
 	{
-		if (RosterManager.Instance.UpdateCurrentRosterSize(1))
-		{
-			Debug.Log("Selected " + _criminal.Name);
-			RosterUpdated?.Invoke(_criminal);
-			Destroy(this.gameObject);
-		}
-		else
-		{
-			Debug.Log("Roster is full");
-		}
+		Debug.Log("Selected " + _criminal.Name);
+		RosterUpdated?.Invoke(_criminal);
+		Destroy(this.gameObject);
 	}
 
 	private void UpdateStatBlocks()
@@ -50,5 +43,4 @@ public class StatCard : MonoBehaviour
 		_techValueField.text = _criminal.Tech.ToString();
 		_charmValueField.text = _criminal.Charm.ToString();
 	}
-
 }
