@@ -157,25 +157,16 @@ public class RosterManager : MonoBehaviour
 	private void RemoveFromAllJobs(Criminal criminal)
 	{
 		if (_pickPocketRoster.Contains(criminal))
-		{
 			_pickPocketRoster.Remove(criminal);
-		}
 
 		if (_hackerRoster.Contains(criminal))
-		{
 			_hackerRoster.Remove(criminal);
-		}
 
 		if (_muggerRoster.Contains(criminal))
-		{
 			_muggerRoster.Remove(criminal);
-		}
 
 		if (_conArtistRoster.Contains(criminal))
-		{
 			_conArtistRoster.Remove(criminal);
-		}
-
 	}
 
 	// Return current number of criminals on main roster
@@ -195,6 +186,4 @@ public class RosterManager : MonoBehaviour
 
 	// Update visual text display of current/max roster size
 	private void UpdateRosterSizeDisplay() => _count.text = $"{Roster.current}/{Roster.max} 'Employees'";
-
 }
-
