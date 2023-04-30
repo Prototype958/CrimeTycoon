@@ -25,8 +25,11 @@ public class UpgradeButton : MonoBehaviour
 	public void PurchaseUpgrade()
 	{
 		if (IncomeSystem.Instance.CanAfford(Upgrade.Cost))
-			//Upgrade.Purchase();
+		{
 			UpgradePurchased?.Invoke(Upgrade);
+			IncomeSystem.Instance.Spend(Upgrade.Cost);
+			Destroy(this.gameObject);
+		}
 		else
 			Debug.Log("aint no money");
 	}

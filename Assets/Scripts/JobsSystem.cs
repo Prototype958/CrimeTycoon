@@ -31,13 +31,13 @@ public class JobsSystem : MonoBehaviour
 
 	private void RunJobs_OnTick(object sender, TimeTickSystem.OnTickEventArgs e)
 	{
-		if (TimeTickSystem.GetTick() % 1 == 0)
+		if (TimeTickSystem.GetTick() % GameManager.Instance.PickPocket.CompletionSpeed == 0)
 			ProcessJob(Job.PickPocket);
-		if (TimeTickSystem.GetTick() % 3 == 0)
+		if (TimeTickSystem.GetTick() % GameManager.Instance.Hacker.CompletionSpeed == 0)
 			ProcessJob(Job.Hacker);
-		if (TimeTickSystem.GetTick() % 6 == 0)
+		if (TimeTickSystem.GetTick() % GameManager.Instance.Mugger.CompletionSpeed == 0)
 			ProcessJob(Job.Mugger);
-		if (TimeTickSystem.GetTick() % 10 == 0)
+		if (TimeTickSystem.GetTick() % GameManager.Instance.ConArtist.CompletionSpeed == 0)
 			ProcessJob(Job.ConArtist);
 	}
 

@@ -34,7 +34,7 @@ public class JobStats : ScriptableObject
 	private bool _isLocked;
 
 	// modified stats, improved with upgrades
-	[SerializeField] private float _modCompletionSpeed;
+	private float _modCompletionSpeed;
 	private float _modSuccessRate;
 	private float _modSuspicionGain;
 
@@ -72,8 +72,10 @@ public class JobStats : ScriptableObject
 							CompletionSpeedUpgrade(u.UpgradeValue);
 							break;
 						case Stat.SuccessRate:
+							SuccessRateUpgrade(u.UpgradeValue);
 							break;
 						case Stat.SuspicionGain:
+							SuspicionGainUpgrade(u.UpgradeValue);
 							break;
 						case Stat.IncomeGain:
 							IncomeUpgrade(u.UpgradeValue);
@@ -90,6 +92,10 @@ public class JobStats : ScriptableObject
 	}
 
 	private void CompletionSpeedUpgrade(float value) => _modCompletionSpeed += value;
+
+	private void SuccessRateUpgrade(float value) => _modSuccessRate += value;
+
+	private void SuspicionGainUpgrade(float value) => _modSuccessRate += value;
 
 	private void IncomeUpgrade(float value)
 	{

@@ -30,9 +30,7 @@ public class StatDisplay : MonoBehaviour
 	{
 		// replace with "X" to close button eventually
 		if (Input.GetKeyDown(KeyCode.Escape))
-		{
 			this.gameObject.SetActive(false);
-		}
 	}
 
 	private void EnableJobToggle(Job job)
@@ -71,21 +69,13 @@ public class StatDisplay : MonoBehaviour
 	private void SelectCurrentJob()
 	{
 		if (_currentCriminal.CurrentJob == Job.PickPocket)
-		{
 			_pickPocketToggle.isOn = true;
-		}
 		else if (_currentCriminal.CurrentJob == Job.Hacker)
-		{
 			_hackerToggle.isOn = true;
-		}
 		else if (_currentCriminal.CurrentJob == Job.Mugger)
-		{
 			_muggerToggle.isOn = true;
-		}
 		else if (_currentCriminal.CurrentJob == Job.ConArtist)
-		{
 			_conArtistToggle.isOn = true;
-		}
 		else
 			_assignmentOptions.SetAllTogglesOff();
 	}
@@ -98,30 +88,20 @@ public class StatDisplay : MonoBehaviour
 		if (tog)
 		{
 			if (selectedToggle == _pickPocketToggle)
-			{
 				newJob = Job.PickPocket;
-			}
 			else if (selectedToggle == _hackerToggle)
-			{
 				newJob = Job.Hacker;
-			}
 			else if (selectedToggle == _muggerToggle)
-			{
 				newJob = Job.Mugger;
-			}
 			else if (selectedToggle == _conArtistToggle)
-			{
 				newJob = Job.ConArtist;
-			}
 
 			AssignJob(newJob);
 		}
 		else
 		{
 			if (selectedToggle == null)
-			{
 				AssignJob(Job.None);
-			}
 		}
 	}
 
