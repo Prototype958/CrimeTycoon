@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Job")]
-public class JobStats : ScriptableObject
+[Serializable]
+public class JobStatsClass
 {
 	public static event Action<Job> EnableJob;
 
 	public Job Type;
 
-	// base stats, do will not change
+	// base stats, will not change
 	[SerializeField] private float _baseCompletionSpeed;
 	[SerializeField] private float _baseSuccessRate;
 	[SerializeField] private float _baseSuspicionGain;
@@ -34,7 +34,7 @@ public class JobStats : ScriptableObject
 	private bool _isLocked;
 
 	// modified stats, improved with upgrades
-	private float _modCompletionSpeed;
+	[SerializeField] private float _modCompletionSpeed;
 	private float _modSuccessRate;
 	private float _modSuspicionGain;
 
@@ -42,7 +42,7 @@ public class JobStats : ScriptableObject
 	public float SuccessRate { get { return _baseSuccessRate + _modCompletionSpeed; } }
 	public float SuspicionGain { get { return _baseSuspicionGain + _modSuspicionGain; } }
 
-	public JobStats()
+	public JobStatsClass()
 	{
 		UpgradeButton.UpgradePurchased += ApplyUpgrade;
 	}

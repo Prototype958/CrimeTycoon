@@ -8,11 +8,16 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField] private List<Upgrade> _upgradesPurchased;
 
-	// Job Objects
-	public JobStats PickPocket;
-	public JobStats Hacker;
-	public JobStats Mugger;
-	public JobStats ConArtist;
+	// // Job Objects
+	// public JobStats PickPocket;
+	// public JobStats Hacker;
+	// public JobStats Mugger;
+	// public JobStats ConArtist;
+
+	public JobStatsClass PickPocket;
+	public JobStatsClass Hacker;
+	public JobStatsClass Mugger;
+	public JobStatsClass ConArtist;
 
 	public void Awake()
 	{
@@ -27,18 +32,12 @@ public class GameManager : MonoBehaviour
 		_upgradesPurchased = new List<Upgrade>();
 
 		TimeTickSystem.Create(this.gameObject);
+
+		// PickPocket = new JobStatsClass();
+		// Hacker = new JobStatsClass();
+		// Mugger = new JobStatsClass();
+		// ConArtist = new JobStatsClass();
 	}
-
-	// set this up to be called when an upgrade is purchased
-	// pass in upgrade to be applied, call appripriate function based on upgrade
-	// private void ApplyUpgrade(Job job, Stat stat, float value, float cost)
-	// {
-	// 	Debug.Log($"Upgrade {job} {stat} by {value}");
-
-	// 	if (stat == Stat.Unlock)
-	// 	{
-	// 	}
-	// }
 
 	private void UpdatePurchasedList(Upgrade u) => _upgradesPurchased.Add(u);
 }

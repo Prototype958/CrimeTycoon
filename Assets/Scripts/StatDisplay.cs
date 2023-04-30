@@ -17,7 +17,7 @@ public class StatDisplay : MonoBehaviour
 
 	private void Awake()
 	{
-		JobStats.EnableJob += EnableJobToggle;
+		JobStatsClass.EnableJob += EnableJobToggle;
 
 		this.gameObject.SetActive(!gameObject.activeSelf);
 

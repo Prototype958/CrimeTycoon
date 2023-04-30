@@ -10682,18 +10682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cashDisplay: {fileID: 965377506}
-  PickPocketIncome:
-    min: 3
-    max: 10
-  HackerIncome:
-    min: 8
-    max: 22
-  MuggerIncome:
-    min: 20
-    max: 35
-  ConArtistIncome:
-    min: 50
-    max: 100
 --- !u!1 &1016855737
 GameObject:
   m_ObjectHideFlags: 0
@@ -12428,7 +12416,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 300, y: 200}
@@ -13371,10 +13359,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradesPurchased: []
-  PickPocket: {fileID: 11400000, guid: 53b5e38c1962e5441a7018dcb18e7faf, type: 2}
-  Hacker: {fileID: 11400000, guid: cf2f5df745f1988499f00f3e1d65131a, type: 2}
-  Mugger: {fileID: 11400000, guid: f9ea092065b6f8647a56a2f23152173f, type: 2}
-  ConArtist: {fileID: 11400000, guid: a23418abf4ba16540a36438ca02555bc, type: 2}
+  PickPocket:
+    Type: 1
+    _baseCompletionSpeed: 3
+    _baseSuccessRate: 0
+    _baseSuspicionGain: 0
+    Income:
+      _baseMin: 3
+      _baseMax: 5
+    _modCompletionSpeed: 0
+  Hacker:
+    Type: 2
+    _baseCompletionSpeed: 5
+    _baseSuccessRate: 0
+    _baseSuspicionGain: 0
+    Income:
+      _baseMin: 8
+      _baseMax: 12
+    _modCompletionSpeed: 0
+  Mugger:
+    Type: 3
+    _baseCompletionSpeed: 8
+    _baseSuccessRate: 0
+    _baseSuspicionGain: 0
+    Income:
+      _baseMin: 15
+      _baseMax: 22
+    _modCompletionSpeed: 0
+  ConArtist:
+    Type: 4
+    _baseCompletionSpeed: 12
+    _baseSuccessRate: 0
+    _baseSuspicionGain: 0
+    Income:
+      _baseMin: 25
+      _baseMax: 37
+    _modCompletionSpeed: 0
 --- !u!1 &1376301982
 GameObject:
   m_ObjectHideFlags: 0
