@@ -38,6 +38,7 @@ public class JobStatsClass
 	private float _modSuccessRate;
 	private float _modSuspicionGain;
 
+	public bool IsWorking = false;
 	public float CompletionSpeed { get { return _baseCompletionSpeed - _modCompletionSpeed; } }
 	public float SuccessRate { get { return _baseSuccessRate + _modCompletionSpeed; } }
 	public float SuspicionGain { get { return _baseSuspicionGain + _modSuspicionGain; } }

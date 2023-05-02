@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,33 +11,31 @@ public class JobsSystem : MonoBehaviour
 	public static event Action<Job> JobAttemptSuccess;
 	public static event Action<Job> JobAttemptFailure;
 
-	private bool _jobsWorking = false;
+	private Array _allJobs;
+
+	private void Awake()
+	{
+		_allJobs = Enum.GetValues(typeof(Job));
+	}
 
 	private void Update()
 	{
-		if (RosterManager.Instance.AnyAssignedJobs() && !_jobsWorking)
+		foreach (Job job in _allJobs)
 		{
-			_jobsWorking = true;
-			TimeTickSystem.OnTick += RunJobs_OnTick;
-		}
-		else if (!RosterManager.Instance.AnyAssignedJobs())
-		{
-			_jobsWorking = false;
-			TimeTickSystem.OnTick -= RunJobs_OnTick;
-			// maybe passive reduce suspicion while running no jobs?
+			if (RosterManager.Instance.GetRoster(job).Count > 0 && !GameManager.Instance.jobMap[job].IsWorking)
+				StartCoroutine(ProcessJobRepeat(job, GameManager.Instance.jobMap[job].CompletionSpeed));
 		}
 	}
 
-	private void RunJobs_OnTick(object sender, TimeTickSystem.OnTickEventArgs e)
+	private IEnumerator ProcessJobRepeat(Job job, float dur)
 	{
-		if (TimeTickSystem.GetTick() % GameManager.Instance.PickPocket.CompletionSpeed == 0)
-			ProcessJob(Job.PickPocket);
-		if (TimeTickSystem.GetTick() % GameManager.Instance.Hacker.CompletionSpeed == 0)
-			ProcessJob(Job.Hacker);
-		if (TimeTickSystem.GetTick() % GameManager.Instance.Mugger.CompletionSpeed == 0)
-			ProcessJob(Job.Mugger);
-		if (TimeTickSystem.GetTick() % GameManager.Instance.ConArtist.CompletionSpeed == 0)
-			ProcessJob(Job.ConArtist);
+		GameManager.Instance.jobMap[job].IsWorking = true;
+		while (RosterManager.Instance.GetRoster(job).Count > 0)
+		{
+			ProcessJob(job);
+			yield return new WaitForSeconds(dur);
+		}
+		GameManager.Instance.jobMap[job].IsWorking = false;
 	}
 
 	private void ProcessJob(Job job)

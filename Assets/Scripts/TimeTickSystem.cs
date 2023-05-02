@@ -59,5 +59,13 @@ public static class TimeTickSystem
 				OnTick?.Invoke(this, new OnTickEventArgs { tick = _tick });
 			}
 		}
+
+		public bool TimerCompleted(float duration)
+		{
+
+
+
+			return true;
+		}
 	}
 }
