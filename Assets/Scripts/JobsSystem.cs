@@ -10,8 +10,6 @@ public class JobsSystem : MonoBehaviour
 	public static event Action<Job> JobAttemptSuccess;
 	public static event Action<Job> JobAttemptFailure;
 
-	public float pickpocketspeed = 5;
-
 	private bool _jobsWorking = false;
 
 	private void Update()
@@ -50,7 +48,7 @@ public class JobsSystem : MonoBehaviour
 		{
 			foreach (Criminal c in tempList)
 			{
-				float success = BASE_SUCCESS_RATE + GetSuccessMod(c, job);
+				float success = GetBaseSuccessRatePerJob(job) + GetSuccessMod(c, job);
 				float check = Random.Range(1, 100);
 
 				if (success + check >= 100)
@@ -80,4 +78,6 @@ public class JobsSystem : MonoBehaviour
 
 		return mod;
 	}
+
+	private float GetBaseSuccessRatePerJob(Job j) => GameManager.Instance.jobMap[j].SuccessRate;
 }

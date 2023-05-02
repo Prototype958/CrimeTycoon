@@ -938,7 +938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721076e976761d846a003089a58d7202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rosterSizeCost: 0
+  _rosterSizeCost: 100
+  _costText: {fileID: 1862999085}
 --- !u!1 &103913316
 GameObject:
   m_ObjectHideFlags: 0
@@ -8304,8 +8305,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14618ea78a2aa44a8b65f7531f03cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recruitCost: 0
+  _recruitCost: 10
   RecruitPanel: {fileID: 1596006519}
+  _costText: {fileID: 601191259}
 --- !u!1 &786924364
 GameObject:
   m_ObjectHideFlags: 0
@@ -13362,39 +13364,35 @@ MonoBehaviour:
   PickPocket:
     Type: 1
     _baseCompletionSpeed: 3
-    _baseSuccessRate: 0
-    _baseSuspicionGain: 0
+    _baseSuccessRate: 50
+    _baseSuspicionGain: 2
     Income:
       _baseMin: 3
       _baseMax: 5
-    _modCompletionSpeed: 0
   Hacker:
     Type: 2
     _baseCompletionSpeed: 5
-    _baseSuccessRate: 0
-    _baseSuspicionGain: 0
+    _baseSuccessRate: 40
+    _baseSuspicionGain: 3
     Income:
       _baseMin: 8
       _baseMax: 12
-    _modCompletionSpeed: 0
   Mugger:
     Type: 3
     _baseCompletionSpeed: 8
-    _baseSuccessRate: 0
-    _baseSuspicionGain: 0
+    _baseSuccessRate: 30
+    _baseSuspicionGain: 5
     Income:
       _baseMin: 15
       _baseMax: 22
-    _modCompletionSpeed: 0
   ConArtist:
     Type: 4
     _baseCompletionSpeed: 12
-    _baseSuccessRate: 0
-    _baseSuspicionGain: 0
+    _baseSuccessRate: 20
+    _baseSuspicionGain: 10
     Income:
       _baseMin: 25
       _baseMax: 37
-    _modCompletionSpeed: 0
 --- !u!1 &1376301982
 GameObject:
   m_ObjectHideFlags: 0
@@ -14589,7 +14587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52af2268cfa96bd43ae2dc9fd2c3d394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickpocketspeed: 5
 --- !u!1 &1493350051
 GameObject:
   m_ObjectHideFlags: 0

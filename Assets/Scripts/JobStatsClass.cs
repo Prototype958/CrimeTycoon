@@ -34,11 +34,11 @@ public class JobStatsClass
 	private bool _isLocked;
 
 	// modified stats, improved with upgrades
-	[SerializeField] private float _modCompletionSpeed;
+	private float _modCompletionSpeed;
 	private float _modSuccessRate;
 	private float _modSuspicionGain;
 
-	public float CompletionSpeed { get { return _baseCompletionSpeed + _modCompletionSpeed; } }
+	public float CompletionSpeed { get { return _baseCompletionSpeed - _modCompletionSpeed; } }
 	public float SuccessRate { get { return _baseSuccessRate + _modCompletionSpeed; } }
 	public float SuspicionGain { get { return _baseSuspicionGain + _modSuspicionGain; } }
 
@@ -47,10 +47,10 @@ public class JobStatsClass
 		UpgradeButton.UpgradePurchased += ApplyUpgrade;
 	}
 
-	private void ApplyUpgrade(Upgrade u)
+	private void ApplyUpgrade(UpgradeClass u)
 	{
-		List<Job> jobList = u.GetAffectedJobs();
-		List<Stat> statList = u.GetStatsToUpgrade();
+		List<Job> jobList = u.upgrade.GetAffectedJobs();
+		List<Stat> statList = u.upgrade.GetStatsToUpgrade();
 
 		foreach (Job job in jobList)
 		{
@@ -101,14 +101,5 @@ public class JobStatsClass
 	{
 		Income.ModMin += value;
 		Income.ModMax += value;
-	}
-
-	public void OnEnable()
-	{
-		_modCompletionSpeed = 0;
-		_modSuccessRate = 0;
-		_modSuspicionGain = 0;
-		Income.ModMin = 0;
-		Income.ModMax = 0;
 	}
 }

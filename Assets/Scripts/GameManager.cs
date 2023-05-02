@@ -6,18 +6,16 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
 
-	[SerializeField] private List<Upgrade> _upgradesPurchased;
+	[SerializeField] private List<UpgradeClass> _upgradesPurchased;
 
-	// // Job Objects
-	// public JobStats PickPocket;
-	// public JobStats Hacker;
-	// public JobStats Mugger;
-	// public JobStats ConArtist;
-
+	// Job Objects
 	public JobStatsClass PickPocket;
 	public JobStatsClass Hacker;
 	public JobStatsClass Mugger;
 	public JobStatsClass ConArtist;
+
+	private List<JobStatsClass> jobs;
+	public Dictionary<Job, JobStatsClass> jobMap;
 
 	public void Awake()
 	{
@@ -29,15 +27,29 @@ public class GameManager : MonoBehaviour
 		// Set up event listeners
 		UpgradeButton.UpgradePurchased += UpdatePurchasedList;
 
-		_upgradesPurchased = new List<Upgrade>();
+		_upgradesPurchased = new List<UpgradeClass>();
 
 		TimeTickSystem.Create(this.gameObject);
 
-		// PickPocket = new JobStatsClass();
-		// Hacker = new JobStatsClass();
-		// Mugger = new JobStatsClass();
-		// ConArtist = new JobStatsClass();
+		//Init Jobs Dictionary
+		InitializeJobMapDict();
 	}
 
-	private void UpdatePurchasedList(Upgrade u) => _upgradesPurchased.Add(u);
+	private void InitializeJobMapDict()
+	{
+		jobs = new();
+		jobMap = new();
+
+		jobs.Add(PickPocket);
+		jobs.Add(Hacker);
+		jobs.Add(Mugger);
+		jobs.Add(ConArtist);
+
+		foreach (var job in jobs)
+		{
+			jobMap[job.Type] = job;
+		}
+	}
+
+	private void UpdatePurchasedList(UpgradeClass u) => _upgradesPurchased.Add(u);
 }

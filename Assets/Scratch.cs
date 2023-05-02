@@ -36,6 +36,16 @@ You have a few stats
     - Stealth: Ability get in and out quietly, lock picking, pick pocketing
     - Tech: Ability with computers, security systems, hacking, gadgets
     - Charm: Ability to get people to trust you, pay attention to you, provide distractions, talk your way out of things
+
+
+Game Loop
+    -> Load Game
+        Starting stats:
+            0 criminals
+            0 suspicion
+            20$
+        
+        
  
  */
 

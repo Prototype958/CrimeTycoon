@@ -8,13 +8,19 @@ public class InitAllUpgrades : MonoBehaviour
 
 	private void Awake()
 	{
+		InitClass();
+	}
+
+	private void InitClass()
+	{
 		_allUpgrades = Resources.LoadAll<Upgrade>("Upgrades");
 		SortUpgradesByCost(_allUpgrades);
 
 		foreach (Upgrade u in _allUpgrades)
 		{
+			UpgradeClass upgrade = new UpgradeClass(u);
 			UpgradeButton button = Instantiate(UpgradeButtonPrefab, this.transform);
-			button.AssignUpgrade(u);
+			button.AssignUpgrade(upgrade);
 		}
 	}
 

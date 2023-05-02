@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UnlockMugging
   m_EditorClassIdentifier: 
   _name: Brass Knuckles
-  _cost: 0
+  _cost: 400
   _description: "They're like a pi\xF1ata"
   _isRepeatable: 0
   _rank: 0

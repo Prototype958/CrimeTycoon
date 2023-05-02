@@ -3,6 +3,13 @@ using UnityEngine;
 
 public static class TimeTickSystem
 {
+	// progress += Time.deltaTime;
+	// if (progress / timePer > 1) {
+	// int cycles = Mathf.Floor(progress / timePer);
+	// progress -= cycles* timePer;
+	// Produce(cycles);
+	//}
+
 	public class OnTickEventArgs : EventArgs
 	{
 		public float tick;
