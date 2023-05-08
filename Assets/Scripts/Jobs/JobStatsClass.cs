@@ -31,15 +31,14 @@ public class JobStatsClass
 		public float ModMax { get { return _modMax; } set { _modMax = value; } }
 	}
 
-	private bool _isLocked;
-
 	// modified stats, improved with upgrades
-	private float _modCompletionSpeed;
+	private float _modCompletionSpeed = 1f;
 	private float _modSuccessRate;
 	private float _modSuspicionGain;
 
 	public bool IsWorking = false;
-	public float CompletionSpeed { get { return _baseCompletionSpeed - _modCompletionSpeed; } }
+	public float CompletionSpeed { get { return _baseCompletionSpeed * _modCompletionSpeed; } }
+	//public float CompletionSpeed { get { if (_modCompletionSpeed > 0) { return _baseCompletionSpeed * _modCompletionSpeed; } else { return _baseCompletionSpeed; } } }
 	public float SuccessRate { get { return _baseSuccessRate + _modCompletionSpeed; } }
 	public float SuspicionGain { get { return _baseSuspicionGain + _modSuspicionGain; } }
 
@@ -92,7 +91,7 @@ public class JobStatsClass
 		}
 	}
 
-	private void CompletionSpeedUpgrade(float value) => _modCompletionSpeed += value;
+	private void CompletionSpeedUpgrade(float value) => _modCompletionSpeed *= value;
 
 	private void SuccessRateUpgrade(float value) => _modSuccessRate += value;
 

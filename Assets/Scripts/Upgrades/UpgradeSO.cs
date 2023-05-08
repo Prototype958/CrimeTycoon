@@ -25,6 +25,7 @@ public class Upgrade : ScriptableObject
 
 	public List<Job> GetAffectedJobs() => AffectedJobs;
 	public List<Stat> GetStatsToUpgrade() => StatsToUpgrade;
+	public List<Upgrade> GetPrerequisites() => preRequisites;
 }
 
 public enum Stat

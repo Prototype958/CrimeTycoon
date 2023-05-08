@@ -9,12 +9,13 @@ public class NavigationManager : MonoBehaviour
 	public GameObject StatsScreen;
 	public GameObject MenuScreen;
 
-	public void Awake()
-	{
-	}
-
 	public void Start()
 	{
+		AssignmentScreen.SetActive(true);
+		UpgradeScreen.SetActive(true);
+		StatsScreen.SetActive(true);
+		MenuScreen.SetActive(true);
+
 		AssignmentScreen.SetActive(false);
 		UpgradeScreen.SetActive(false);
 		StatsScreen.SetActive(false);

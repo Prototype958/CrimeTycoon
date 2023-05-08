@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -24,7 +25,7 @@ public class UpgradeButton : MonoBehaviour
 
 	public void PurchaseUpgrade()
 	{
-		if (IncomeSystem.Instance.CanAfford(Upgrade.Cost))
+		if (IncomeSystem.Instance.CanAfford(Upgrade.Cost) && ComparePrerequisites(Upgrade.GetPrerequisites()))
 		{
 			UpgradePurchased?.Invoke(Upgrade);
 			IncomeSystem.Instance.Spend(Upgrade.Cost);
@@ -36,5 +37,16 @@ public class UpgradeButton : MonoBehaviour
 		}
 		else
 			Debug.Log("aint no money");
+	}
+
+	private bool ComparePrerequisites(List<Upgrade> prereqs)
+	{
+		foreach (Upgrade u in prereqs)
+		{
+			if (!GameManager.Instance.CheckForPrerequisiteUpgrade(u))
+				return false;
+		}
+
+		return true;
 	}
 }

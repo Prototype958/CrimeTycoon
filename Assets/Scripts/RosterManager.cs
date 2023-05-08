@@ -33,7 +33,6 @@ public class RosterManager : MonoBehaviour
 	private List<Criminal> _mainRoster, _pickPocketRoster, _hackerRoster, _muggerRoster, _conArtistRoster;
 
 	[SerializeField] private TextMeshProUGUI _count;
-	[SerializeField] private float _upgradeCost;
 
 	public void Awake()
 	{

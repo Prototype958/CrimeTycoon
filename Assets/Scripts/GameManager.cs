@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
 
-	[SerializeField] private List<UpgradeClass> _upgradesPurchased;
+	[SerializeField] private List<Upgrade> _upgradesPurchased;
 
 	// Job Objects
 	public JobStatsClass PickPocket;
@@ -27,12 +27,21 @@ public class GameManager : MonoBehaviour
 		// Set up event listeners
 		UpgradeButton.UpgradePurchased += UpdatePurchasedList;
 
-		_upgradesPurchased = new List<UpgradeClass>();
+		_upgradesPurchased = new List<Upgrade>();
 
 		TimeTickSystem.Create(this.gameObject);
 
 		//Init Jobs Dictionary
 		InitializeJobMapDict();
+	}
+
+	public bool CheckForPrerequisiteUpgrade(Upgrade u)
+	{
+
+		if (_upgradesPurchased.Contains(u))
+			return true;
+
+		return false;
 	}
 
 	private void InitializeJobMapDict()
@@ -51,5 +60,5 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void UpdatePurchasedList(UpgradeClass u) => _upgradesPurchased.Add(u);
+	private void UpdatePurchasedList(UpgradeClass u) => _upgradesPurchased.Add(u.upgrade);
 }

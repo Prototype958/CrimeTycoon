@@ -6,36 +6,47 @@ using Random = UnityEngine.Random;
 
 public class JobsSystem : MonoBehaviour
 {
-	const float BASE_SUCCESS_RATE = 20f;
-
 	public static event Action<Job> JobAttemptSuccess;
 	public static event Action<Job> JobAttemptFailure;
+
+	[SerializeField] private CompletionTickBar[] _bars;
 
 	private Array _allJobs;
 
 	private void Awake()
 	{
 		_allJobs = Enum.GetValues(typeof(Job));
+
+		_bars = FindObjectsOfType<CompletionTickBar>();
 	}
 
 	private void Update()
 	{
-		foreach (Job job in _allJobs)
+		foreach (CompletionTickBar bar in _bars)
 		{
-			if (RosterManager.Instance.GetRoster(job).Count > 0 && !GameManager.Instance.jobMap[job].IsWorking)
-				StartCoroutine(ProcessJobRepeat(job, GameManager.Instance.jobMap[job].CompletionSpeed));
+			if (RosterManager.Instance.GetRoster(bar.job).Count > 0 && !GameManager.Instance.jobMap[bar.job].IsWorking)
+				StartCoroutine(UpdateCompletionBar(bar));
 		}
 	}
 
-	private IEnumerator ProcessJobRepeat(Job job, float dur)
+	private IEnumerator UpdateCompletionBar(CompletionTickBar bar)
 	{
-		GameManager.Instance.jobMap[job].IsWorking = true;
-		while (RosterManager.Instance.GetRoster(job).Count > 0)
+		GameManager.Instance.jobMap[bar.job].IsWorking = true;
+		float _fillTime = 0;
+		while (RosterManager.Instance.GetRoster(bar.job).Count > 0)
 		{
-			ProcessJob(job);
-			yield return new WaitForSeconds(dur);
+			bar.Slider.value = Mathf.Lerp(bar.Slider.minValue, bar.Slider.maxValue, _fillTime);
+			_fillTime += Time.deltaTime / GameManager.Instance.jobMap[bar.job].CompletionSpeed;
+
+			if (bar.Slider.value == bar.Slider.maxValue)
+			{
+				_fillTime = 0;
+				bar.Slider.value = bar.Slider.minValue;
+				ProcessJob(bar.job);
+			}
+			yield return null;
 		}
-		GameManager.Instance.jobMap[job].IsWorking = false;
+		GameManager.Instance.jobMap[bar.job].IsWorking = false;
 	}
 
 	private void ProcessJob(Job job)

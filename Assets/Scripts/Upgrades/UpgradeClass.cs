@@ -1,5 +1,6 @@
-using UnityEngine;
+using System.Collections.Generic;
 
+[System.Serializable]
 public class UpgradeClass
 {
 	public Upgrade upgrade;
@@ -31,6 +32,13 @@ public class UpgradeClass
 	public int Rank => _rank;
 	public float UpgradeValue => _upgradeValue;
 
+	private List<Job> AffectedJobs = new List<Job>();
+	private List<Stat> StatsToUpgrade = new List<Stat>();
+	private List<Upgrade> preRequisites = new List<Upgrade>();
+
+	public List<Job> GetAffectedJobs() => AffectedJobs;
+	public List<Stat> GetStatsToUpgrade() => StatsToUpgrade;
+	public List<Upgrade> GetPrerequisites() => preRequisites;
 
 	public UpgradeClass(Upgrade u)
 	{
@@ -42,6 +50,10 @@ public class UpgradeClass
 		_isRepeatable = u.IsRepeatable;
 		_rank = u.Rank;
 		_upgradeValue = u.UpgradeValue;
+
+		AffectedJobs = u.GetAffectedJobs();
+		StatsToUpgrade = u.GetStatsToUpgrade();
+		preRequisites = u.GetPrerequisites();
 	}
 
 	public bool CheckForNextRank()
@@ -49,9 +61,8 @@ public class UpgradeClass
 		if (IsRepeatable)
 		{
 			_rank++;
-			_cost *= 1.25f;
-			_upgradeValue *= 1.25f;
-			_upgradeValue = Mathf.Round(_upgradeValue * 4) / 4;
+			_cost += (_cost * .25f);
+			_upgradeValue += (_upgradeValue * .33f);
 			return true;
 		}
 
