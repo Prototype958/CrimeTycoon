@@ -13,6 +13,7 @@ public class JobStatsClass
 	[SerializeField] private float _baseCompletionSpeed;
 	[SerializeField] private float _baseSuccessRate;
 	[SerializeField] private float _baseSuspicionGain;
+	[SerializeField] private bool _jobEnabled;
 
 	[SerializeField] public IncomeGain Income;
 
@@ -33,24 +34,25 @@ public class JobStatsClass
 
 	// modified stats, improved with upgrades
 	private float _modCompletionSpeed = 1f;
-	private float _modSuccessRate;
-	private float _modSuspicionGain;
+	private float _modSuccessRate = 1;
+	private float _modSuspicionGain = 1;
 
 	public bool IsWorking = false;
-	public float CompletionSpeed { get { return _baseCompletionSpeed * _modCompletionSpeed; } }
+	public bool JobEnabled => _jobEnabled;
+	public float CompletionSpeed { get { return _baseCompletionSpeed; } }
 	//public float CompletionSpeed { get { if (_modCompletionSpeed > 0) { return _baseCompletionSpeed * _modCompletionSpeed; } else { return _baseCompletionSpeed; } } }
-	public float SuccessRate { get { return _baseSuccessRate + _modCompletionSpeed; } }
-	public float SuspicionGain { get { return _baseSuspicionGain + _modSuspicionGain; } }
+	public float SuccessRate { get { return _baseSuccessRate * _modSuccessRate; } }
+	public float SuspicionGain { get { return _baseSuspicionGain * _modSuspicionGain; } }
 
 	public JobStatsClass()
 	{
 		UpgradeButton.UpgradePurchased += ApplyUpgrade;
 	}
 
-	private void ApplyUpgrade(UpgradeClass u)
+	private void ApplyUpgrade(UpgradeClass upgrade)
 	{
-		List<Job> jobList = u.upgrade.GetAffectedJobs();
-		List<Stat> statList = u.upgrade.GetStatsToUpgrade();
+		List<Job> jobList = upgrade.upgrade.GetAffectedJobs();
+		List<Stat> statList = upgrade.upgrade.GetStatsToUpgrade();
 
 		foreach (Job job in jobList)
 		{
@@ -69,16 +71,16 @@ public class JobStatsClass
 						case Stat.Charm:
 							break;
 						case Stat.CompletionSpeed:
-							CompletionSpeedUpgrade(u.UpgradeValue);
+							CompletionSpeedUpgrade(upgrade);
 							break;
 						case Stat.SuccessRate:
-							SuccessRateUpgrade(u.UpgradeValue);
+							SuccessRateUpgrade(upgrade.UpgradeValue);
 							break;
 						case Stat.SuspicionGain:
-							SuspicionGainUpgrade(u.UpgradeValue);
+							SuspicionGainUpgrade(upgrade.UpgradeValue);
 							break;
 						case Stat.IncomeGain:
-							IncomeUpgrade(u.UpgradeValue);
+							IncomeUpgrade(upgrade.UpgradeValue);
 							break;
 						case Stat.Unlock:
 							EnableJob?.Invoke(job);
@@ -91,7 +93,7 @@ public class JobStatsClass
 		}
 	}
 
-	private void CompletionSpeedUpgrade(float value) => _modCompletionSpeed *= value;
+	private void CompletionSpeedUpgrade(UpgradeClass u) => _baseCompletionSpeed *= Mathf.Pow(u.UpgradeValue, u.Rank);
 
 	private void SuccessRateUpgrade(float value) => _modSuccessRate += value;
 
@@ -101,5 +103,10 @@ public class JobStatsClass
 	{
 		Income.ModMin += value;
 		Income.ModMax += value;
+	}
+
+	private void OnDestroy()
+	{
+		UpgradeButton.UpgradePurchased -= ApplyUpgrade;
 	}
 }

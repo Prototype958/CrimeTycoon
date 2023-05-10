@@ -61,22 +61,22 @@ Game Loop
 
 // Each job needs its own pros/cons.
 // Pick Pocket: 
-// quick completion time
-// low suspicion
-// low reward
-// average success rate
+//      quick completion time +
+//      low suspicion + 
+//      low reward - 
+//      average success rate ~
 // Hacking
-// lower success rate
-// higher reward
-// low suspicion
-// slower completion time?
+//      lower success rate -
+//      higher reward +
+//      low suspicion +
+//      slower completion time? -
 // Mugging: 
-// fast completion
-// high suspicion
-// high reward
-// average success?
+//      fast completion +
+//      high suspicion -
+//      high reward +
+//      average success? ~
 // Con Artist:
-// longest completion
-// highest reward
-// average suspicion
-// average success rate?
+//      longest completion -
+//      highest reward +
+//      average suspicion ~
+//      average success rate? ~

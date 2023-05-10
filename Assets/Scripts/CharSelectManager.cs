@@ -13,6 +13,7 @@ public class CharSelectManager : MonoBehaviour
 
 		StatCard.RosterUpdated += DisablePanel;
 	}
+
 	public void ToggleDisplay() => this.gameObject.SetActive(!gameObject.activeSelf);
 	public void DisablePanel(Criminal c) => ToggleDisplay();
 
@@ -23,6 +24,11 @@ public class CharSelectManager : MonoBehaviour
 		{
 			StatCards[i] = Instantiate(CardPrefab, this.transform);
 		}
+	}
+
+	private void OnDestroy()
+	{
+		StatCard.RosterUpdated -= DisablePanel;
 	}
 
 	public void OnDisable()

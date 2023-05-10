@@ -28,7 +28,7 @@ public class RosterManager : MonoBehaviour
 	public RosterCard RosterCardPrefab;
 	public GameObject Container;
 
-	private RosterCard RosterCard;
+	private RosterCard _rosterCard;
 	private RosterSize Roster;
 	private List<Criminal> _mainRoster, _pickPocketRoster, _hackerRoster, _muggerRoster, _conArtistRoster;
 
@@ -36,14 +36,20 @@ public class RosterManager : MonoBehaviour
 
 	public void Awake()
 	{
+		if (Container == null)
+			Debug.Log("null in awake");
+
+		if (Container.gameObject == null)
+			Debug.Log("go null in awake");
+
+		if (Instance != null && Instance != this)
+			Destroy(this.gameObject);
+		else
+			Instance = this;
+
 		// Set up listeners
 		StatCard.RosterUpdated += AddToDisplay;
 		StatDisplay.JobUpdated += UpdateJobRosters;
-
-		if (Instance != null && Instance != this)
-			Destroy(this);
-		else
-			Instance = this;
 
 		// Initialization
 		Roster = new RosterSize(2, 0); // RosterSize(max, cur)
@@ -55,6 +61,12 @@ public class RosterManager : MonoBehaviour
 		_hackerRoster = new List<Criminal>();
 		_muggerRoster = new List<Criminal>();
 		_conArtistRoster = new List<Criminal>();
+	}
+
+	private void OnDestroy()
+	{
+		StatCard.RosterUpdated -= AddToDisplay;
+		StatDisplay.JobUpdated -= UpdateJobRosters;
 	}
 
 	// Return an individual roster for a specific job
@@ -118,10 +130,19 @@ public class RosterManager : MonoBehaviour
 	// Assign selected criminal to roster card for display on Assignments page
 	private void AddToDisplay(Criminal criminal)
 	{
+		if (criminal == null)
+			Debug.Log("criminal null");
+
+		if (RosterCardPrefab.gameObject == null)
+			Debug.Log("roster card null");
+
+		if (Container == null)
+			Debug.Log("container null");
+
 		UpdateCurrentRosterSize(1);
 
-		RosterCard = Instantiate(RosterCardPrefab, Container.transform);
-		RosterCard._criminal = criminal;
+		_rosterCard = Instantiate(RosterCardPrefab, Container.transform);
+		_rosterCard._criminal = criminal;
 		_mainRoster.Add(criminal);
 	}
 

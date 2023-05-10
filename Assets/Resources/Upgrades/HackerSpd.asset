@@ -17,7 +17,7 @@ MonoBehaviour:
   _description: Type Faster!
   _isRepeatable: 1
   _rank: 1
-  _upgradeValue: 0.15
+  _upgradeValue: 0.985
   AffectedJobs: 02000000
   StatsToUpgrade: 04000000
   preRequisites:

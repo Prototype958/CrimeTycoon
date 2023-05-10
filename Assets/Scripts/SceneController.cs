@@ -10,13 +10,18 @@ public class SceneController : MonoBehaviour
 		DontDestroyOnLoad(this);
 
 		if (Instance != null && Instance != this)
-			Destroy(this);
+			Destroy(this.gameObject);
 		else
 			Instance = this;
 	}
 
-	public void StartButtonPressed()
+	public void LoadGameScene()
 	{
 		SceneManager.LoadScene("GameScene");
+	}
+
+	public void ExitToMenu()
+	{
+		SceneManager.LoadScene("StartMenu");
 	}
 }

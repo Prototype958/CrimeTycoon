@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private List<Upgrade> _upgradesPurchased;
 
 	// Job Objects
+	[Header("Job Stats")]
 	public JobStatsClass PickPocket;
 	public JobStatsClass Hacker;
 	public JobStatsClass Mugger;
@@ -24,6 +25,9 @@ public class GameManager : MonoBehaviour
 		else
 			Instance = this;
 
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 45;
+
 		// Set up event listeners
 		UpgradeButton.UpgradePurchased += UpdatePurchasedList;
 
@@ -33,6 +37,11 @@ public class GameManager : MonoBehaviour
 
 		//Init Jobs Dictionary
 		InitializeJobMapDict();
+	}
+
+	private void OnDestroy()
+	{
+		UpgradeButton.UpgradePurchased -= UpdatePurchasedList;
 	}
 
 	public bool CheckForPrerequisiteUpgrade(Upgrade u)

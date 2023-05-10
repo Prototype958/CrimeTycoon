@@ -5694,6 +5694,7 @@ GameObject:
   - component: {fileID: 377227998}
   - component: {fileID: 377228000}
   - component: {fileID: 377227999}
+  - component: {fileID: 377228001}
   m_Layer: 0
   m_Name: MuggingInfoBlock
   m_TagString: Untagged
@@ -5766,6 +5767,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377227997}
   m_CullTransparentMesh: 1
+--- !u!114 &377228001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377227997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010e47555242d1e4d9d48cf9634161eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _job: 3
+  _successRateDisplay: {fileID: 498469785}
+  _workersDisplay: {fileID: 543362481}
+  _incomeRateDisply: {fileID: 1795178294}
+  _completionSpeedDisplay: {fileID: 522658907}
 --- !u!1 &385104863
 GameObject:
   m_ObjectHideFlags: 0
@@ -6600,7 +6618,7 @@ GameObject:
   - component: {fileID: 453716357}
   - component: {fileID: 453716356}
   m_Layer: 0
-  m_Name: WorkersValue
+  m_Name: JobSpeedValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7962,7 +7980,7 @@ GameObject:
   - component: {fileID: 522658908}
   - component: {fileID: 522658907}
   m_Layer: 0
-  m_Name: WorkersValue
+  m_Name: JobSpeedValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8340,6 +8358,7 @@ GameObject:
   - component: {fileID: 560503177}
   - component: {fileID: 560503179}
   - component: {fileID: 560503178}
+  - component: {fileID: 560503180}
   m_Layer: 0
   m_Name: HackingInfoBlock
   m_TagString: Untagged
@@ -8412,6 +8431,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560503176}
   m_CullTransparentMesh: 1
+--- !u!114 &560503180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560503176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010e47555242d1e4d9d48cf9634161eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _job: 2
+  _successRateDisplay: {fileID: 1813232173}
+  _workersDisplay: {fileID: 1319991171}
+  _incomeRateDisply: {fileID: 953073783}
+  _completionSpeedDisplay: {fileID: 1233317702}
 --- !u!1 &576583159
 GameObject:
   m_ObjectHideFlags: 0
@@ -14098,6 +14134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cashDisplay: {fileID: 965377506}
+  _startingCash: 1000
 --- !u!1 &1016855737
 GameObject:
   m_ObjectHideFlags: 0
@@ -16106,7 +16143,7 @@ GameObject:
   - component: {fileID: 1233317703}
   - component: {fileID: 1233317702}
   m_Layer: 0
-  m_Name: WorkersValue
+  m_Name: JobSpeedValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18381,7 +18418,8 @@ MonoBehaviour:
     Type: 1
     _baseCompletionSpeed: 5
     _baseSuccessRate: 50
-    _baseSuspicionGain: 2
+    _baseSuspicionGain: 18
+    _jobEnabled: 1
     Income:
       _baseMin: 3
       _baseMax: 5
@@ -18390,7 +18428,8 @@ MonoBehaviour:
     Type: 2
     _baseCompletionSpeed: 8
     _baseSuccessRate: 40
-    _baseSuspicionGain: 3
+    _baseSuspicionGain: 22
+    _jobEnabled: 0
     Income:
       _baseMin: 8
       _baseMax: 12
@@ -18399,7 +18438,8 @@ MonoBehaviour:
     Type: 3
     _baseCompletionSpeed: 12
     _baseSuccessRate: 30
-    _baseSuspicionGain: 5
+    _baseSuspicionGain: 36
+    _jobEnabled: 0
     Income:
       _baseMin: 15
       _baseMax: 22
@@ -18408,7 +18448,8 @@ MonoBehaviour:
     Type: 4
     _baseCompletionSpeed: 16
     _baseSuccessRate: 20
-    _baseSuspicionGain: 10
+    _baseSuspicionGain: 47
+    _jobEnabled: 0
     Income:
       _baseMin: 25
       _baseMax: 37
@@ -18661,7 +18702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.17080688, y: 0.12010002}
+  m_AnchoredPosition: {x: 1.4390564, y: 0.12010002}
   m_SizeDelta: {x: 1.0374, y: -0.7983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1392466823
@@ -22476,6 +22517,7 @@ GameObject:
   - component: {fileID: 1771619789}
   - component: {fileID: 1771619791}
   - component: {fileID: 1771619790}
+  - component: {fileID: 1771619792}
   m_Layer: 0
   m_Name: PickPocketInfoBlock
   m_TagString: Untagged
@@ -22548,6 +22590,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771619788}
   m_CullTransparentMesh: 1
+--- !u!114 &1771619792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771619788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010e47555242d1e4d9d48cf9634161eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _job: 1
+  _successRateDisplay: {fileID: 1463916489}
+  _workersDisplay: {fileID: 945492070}
+  _incomeRateDisply: {fileID: 916568819}
+  _completionSpeedDisplay: {fileID: 2128823373}
 --- !u!1 &1773740969
 GameObject:
   m_ObjectHideFlags: 0
@@ -26598,6 +26657,7 @@ GameObject:
   - component: {fileID: 2081030207}
   - component: {fileID: 2081030209}
   - component: {fileID: 2081030208}
+  - component: {fileID: 2081030210}
   m_Layer: 0
   m_Name: ConArtistInfoBlock
   m_TagString: Untagged
@@ -26670,6 +26730,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081030206}
   m_CullTransparentMesh: 1
+--- !u!114 &2081030210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081030206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010e47555242d1e4d9d48cf9634161eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _job: 4
+  _successRateDisplay: {fileID: 50475365}
+  _workersDisplay: {fileID: 500928789}
+  _incomeRateDisply: {fileID: 1483275142}
+  _completionSpeedDisplay: {fileID: 453716356}
 --- !u!1 &2098840871
 GameObject:
   m_ObjectHideFlags: 0
@@ -27232,7 +27309,7 @@ GameObject:
   - component: {fileID: 2128823374}
   - component: {fileID: 2128823373}
   m_Layer: 0
-  m_Name: WorkersValue
+  m_Name: CompletionSpeedValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

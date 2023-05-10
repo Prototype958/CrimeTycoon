@@ -12,7 +12,9 @@ public class IncomeSystem : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI _cashDisplay;
 
 	// Properties
-	private float _currentCash = 20.00f;
+	[SerializeField] private float _startingCash;
+
+	private float _currentCash;
 
 	public float CurrentCash => _currentCash;
 
@@ -24,7 +26,14 @@ public class IncomeSystem : MonoBehaviour
 			Instance = this;
 
 		JobsSystem.JobAttemptSuccess += HandleJobIncome;
+
+		_currentCash = _startingCash;
 		_cashDisplay.text = _currentCash.ToString("c2");
+	}
+
+	private void OnDestroy()
+	{
+		JobsSystem.JobAttemptSuccess -= HandleJobIncome;
 	}
 
 	//

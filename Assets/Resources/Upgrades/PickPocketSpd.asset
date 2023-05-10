@@ -17,7 +17,7 @@ MonoBehaviour:
   _description: Slow is smooth and smooth is fast
   _isRepeatable: 1
   _rank: 1
-  _upgradeValue: 0.25
+  _upgradeValue: 0.985
   AffectedJobs: 01000000
   StatsToUpgrade: 04000000
   preRequisites: []
