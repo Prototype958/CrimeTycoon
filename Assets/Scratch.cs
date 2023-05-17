@@ -16,7 +16,7 @@ You have a few resources to manage
     - Cash (upgrades, criminals, equipment, bribes)
     - Notice (chances of criminals being caught, better criminals available for hire)
 
-Occasinally you might notice an opportunity for a 
+Occasinally you might notice an opportunity for a event
 Options:
     - Bank Robbery (+++money, +++notice)
     - "Absorb" a rival (++criminals)

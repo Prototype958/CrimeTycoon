@@ -30,25 +30,18 @@ public class RosterManager : MonoBehaviour
 
 	private RosterCard _rosterCard;
 	private RosterSize Roster;
-	private List<Criminal> _mainRoster, _pickPocketRoster, _hackerRoster, _muggerRoster, _conArtistRoster;
+	private List<Criminal> _mainRoster, _arrestedRoster, _pickPocketRoster, _hackerRoster, _muggerRoster, _conArtistRoster;
 
 	[SerializeField] private TextMeshProUGUI _count;
 
 	public void Awake()
 	{
-		if (Container == null)
-			Debug.Log("null in awake");
-
-		if (Container.gameObject == null)
-			Debug.Log("go null in awake");
-
 		if (Instance != null && Instance != this)
 			Destroy(this.gameObject);
 		else
 			Instance = this;
 
 		// Set up listeners
-		StatCard.RosterUpdated += AddToDisplay;
 		StatDisplay.JobUpdated += UpdateJobRosters;
 
 		// Initialization
@@ -57,6 +50,7 @@ public class RosterManager : MonoBehaviour
 
 		// Lists of criminals and assignments
 		_mainRoster = new List<Criminal>();
+		_arrestedRoster = new List<Criminal>();
 		_pickPocketRoster = new List<Criminal>();
 		_hackerRoster = new List<Criminal>();
 		_muggerRoster = new List<Criminal>();
@@ -65,7 +59,6 @@ public class RosterManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		StatCard.RosterUpdated -= AddToDisplay;
 		StatDisplay.JobUpdated -= UpdateJobRosters;
 	}
 
@@ -110,7 +103,13 @@ public class RosterManager : MonoBehaviour
 
 	// Increase value representing current members in roster
 	// and update visual display to reflect
-	public void UpdateCurrentRosterSize(int i)
+	public void UpdateCurrentRoster(Criminal c)
+	{
+		UpdateCurrentRosterValue(1);
+		_mainRoster.Add(c);
+	}
+
+	public void UpdateCurrentRosterValue(int i)
 	{
 		Roster.current += i;
 		UpdateRosterSizeDisplay();
@@ -124,26 +123,12 @@ public class RosterManager : MonoBehaviour
 		UpdateRosterSizeDisplay();
 	}
 
-	// New criminal to be added to roster. Instantiate prefab inside selection container
-	// Update appropriate roster display values
-	// Add criminal to main roster
-	// Assign selected criminal to roster card for display on Assignments page
-	private void AddToDisplay(Criminal criminal)
+	public void MoveToArrested(Criminal c)
 	{
-		if (criminal == null)
-			Debug.Log("criminal null");
-
-		if (RosterCardPrefab.gameObject == null)
-			Debug.Log("roster card null");
-
-		if (Container == null)
-			Debug.Log("container null");
-
-		UpdateCurrentRosterSize(1);
-
-		_rosterCard = Instantiate(RosterCardPrefab, Container.transform);
-		_rosterCard._criminal = criminal;
-		_mainRoster.Add(criminal);
+		RemoveFromAllJobs(c);
+		UpdateCurrentRosterValue(-1);
+		_mainRoster.Remove(c);
+		_arrestedRoster.Add(c);
 	}
 
 	// When new job is selected for a criminal, move update/move them to

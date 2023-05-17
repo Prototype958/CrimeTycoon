@@ -12,12 +12,14 @@ public class JobsSystem : MonoBehaviour
 	[SerializeField] private CompletionTickBar[] _bars;
 
 	private Array _allJobs;
+	private Arrests _arrests;
 
 	private void Awake()
 	{
 		_allJobs = Enum.GetValues(typeof(Job));
-
 		_bars = FindObjectsOfType<CompletionTickBar>();
+
+		_arrests = new Arrests();
 	}
 
 	private void Update()
@@ -68,6 +70,8 @@ public class JobsSystem : MonoBehaviour
 				else
 				{
 					JobAttemptFailure?.Invoke(job);
+					if (_arrests.CheckForArrest(c))
+						break;
 				}
 			}
 		}

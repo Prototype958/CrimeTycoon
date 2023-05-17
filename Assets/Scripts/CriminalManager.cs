@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -31,6 +32,23 @@ public class CriminalManager : MonoBehaviour
 	public Criminal BuildNewCriminal()
 	{
 		return new Criminal();
+	}
+
+	// If criminal is arrested close Large Stat Display window if open
+	// Move criminal from mainRoster to arrestedRoster
+	// Remove criminal from any active job rosters
+	// find correct roster display card and remove it from scroll container
+	public void OnArrest(Criminal criminal)
+	{
+		if (DisplayCard.CurrentCriminal == criminal)
+			DisplayCard.Deactivate();
+
+		RosterManager.Instance.MoveToArrested(criminal);
+
+		var _card = GameObject.FindObjectsOfType<RosterCard>(true).First(s => s._criminal == criminal);
+
+		Destroy(_card.gameObject);
+
 	}
 
 	private List<string> ParseFile(string fileName)

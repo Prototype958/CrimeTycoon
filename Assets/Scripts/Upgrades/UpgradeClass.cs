@@ -63,8 +63,6 @@ public class UpgradeClass
 		{
 			_rank++;
 			_cost += (_cost * .25f);
-			//_upgradeValue += (_upgradeValue * .33f);
-			//_upgradeValue = _upgradeValue * (Mathf.Pow(_rank, 1.25f));
 			return true;
 		}
 

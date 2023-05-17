@@ -8548,6 +8548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _suspicion: 0
+  _reductionRate: 2
   _suspicionDisplay: {fileID: 91334456}
 --- !u!1 &585399220
 GameObject:
@@ -17919,6 +17920,7 @@ GameObject:
   - component: {fileID: 1336243926}
   - component: {fileID: 1336243927}
   - component: {fileID: 1336243928}
+  - component: {fileID: 1336243929}
   m_Layer: 0
   m_Name: ScrollContainer
   m_TagString: Untagged
@@ -17984,6 +17986,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1336243929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336243925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6116034eb14fc4db6ea5c065c03cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayCardPrefab: {fileID: 514133401916983232, guid: c651317b54130104fabaeb53474d1e21, type: 3}
 --- !u!1 &1339945119
 GameObject:
   m_ObjectHideFlags: 0
@@ -21051,6 +21066,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588933859}
   m_CullTransparentMesh: 1
+--- !u!1 &1589019173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589019174}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1589019174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589019173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1938052805}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1592968293
 GameObject:
   m_ObjectHideFlags: 0
@@ -24963,6 +25009,7 @@ Transform:
   - {fileID: 1474865475}
   - {fileID: 988537853}
   - {fileID: 583489415}
+  - {fileID: 1589019174}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

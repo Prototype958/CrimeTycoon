@@ -33,14 +33,12 @@ public class JobStatsClass
 	}
 
 	// modified stats, improved with upgrades
-	private float _modCompletionSpeed = 1f;
 	private float _modSuccessRate = 1;
 	private float _modSuspicionGain = 1;
 
 	public bool IsWorking = false;
 	public bool JobEnabled => _jobEnabled;
-	public float CompletionSpeed { get { return _baseCompletionSpeed; } }
-	//public float CompletionSpeed { get { if (_modCompletionSpeed > 0) { return _baseCompletionSpeed * _modCompletionSpeed; } else { return _baseCompletionSpeed; } } }
+	public float CompletionSpeed => _baseCompletionSpeed;
 	public float SuccessRate { get { return _baseSuccessRate * _modSuccessRate; } }
 	public float SuspicionGain { get { return _baseSuspicionGain * _modSuspicionGain; } }
 

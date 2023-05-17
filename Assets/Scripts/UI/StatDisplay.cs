@@ -15,6 +15,8 @@ public class StatDisplay : MonoBehaviour
 
 	private Criminal _currentCriminal;
 
+	public Criminal CurrentCriminal { get { return _currentCriminal; } }
+
 	private void Awake()
 	{
 		JobStatsClass.EnableJob += EnableJobToggle;
@@ -70,6 +72,8 @@ public class StatDisplay : MonoBehaviour
 		_techField.text = criminal.Tech.ToString();
 		_charmField.text = criminal.Charm.ToString();
 	}
+
+	public void Deactivate() => gameObject.SetActive(false);
 
 	private void SelectCurrentJob()
 	{
