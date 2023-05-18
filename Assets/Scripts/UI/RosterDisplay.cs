@@ -3,12 +3,14 @@ using UnityEngine;
 public class RosterDisplay : MonoBehaviour
 {
 	private RosterCard _displayCard;
+	private NotificationSystem _notifications;
 
 	public RosterCard DisplayCardPrefab;
 
 	private void Awake()
 	{
 		StatCard.RosterUpdated += AddToDisplay;
+		_notifications = GameObject.FindObjectOfType<NotificationSystem>();
 	}
 
 	private void OnDestroy() => StatCard.RosterUpdated -= AddToDisplay;
@@ -20,6 +22,7 @@ public class RosterDisplay : MonoBehaviour
 	private void AddToDisplay(Criminal criminal)
 	{
 		RosterManager.Instance.UpdateCurrentRoster(criminal);
+		_notifications.LogNotification($"{criminal.Name} has joined the crew.");
 
 		_displayCard = Instantiate(DisplayCardPrefab, this.gameObject.transform);
 		_displayCard._criminal = criminal;

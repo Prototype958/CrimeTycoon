@@ -7,11 +7,13 @@ public class Arrests
 	public float ArrestThreshold { get { return _arrestThreshold; } set { _arrestThreshold = value; } }
 
 	private SuspicionManager _suspicion;
+	private NotificationSystem _notifications;
 
 	public Arrests()
 	{
 		_arrestThreshold = 50f;
 		_suspicion = GameObject.FindObjectOfType<SuspicionManager>();
+		_notifications = GameObject.FindObjectOfType<NotificationSystem>();
 	}
 
 	// Check if parameters for arrest have been met
@@ -24,6 +26,7 @@ public class Arrests
 			Debug.Log("go directly to jail");
 			CriminalManager.Instance.OnArrest(criminal);
 
+			_notifications.LogNotification($"{criminal.Name} has been arrested!");
 			return true;
 		}
 		return false;
