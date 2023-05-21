@@ -2845,8 +2845,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -50}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 167.78113, y: -50}
+  m_SizeDelta: {x: 295.5623, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &229448118
 MonoBehaviour:
@@ -2931,7 +2931,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -86.08563, w: 0}
+  m_margin: {x: 0, y: 0, z: 0.038497925, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -13944,7 +13944,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -99.10181, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -14258,7 +14258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cashDisplay: {fileID: 965377506}
-  _startingCash: 10000
+  _startingCash: 500
 --- !u!1 &1016855737
 GameObject:
   m_ObjectHideFlags: 0
@@ -18266,6 +18266,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 6474396878761247293, guid: 1910a83a1a88e284880d76372f1fd734, type: 3}
   _messages: []
+  _simpleColor: {r: 0, g: 0.52459025, b: 1, a: 1}
+  _warningColor: {r: 0.7264151, g: 0.25540704, b: 0, a: 1}
+  _alertColor: {r: 0.6392157, g: 0, b: 0.032966245, a: 1}
 --- !u!114 &1338198646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26983,6 +26986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayCard: {fileID: 2043230905}
+  _recruitRank: 1
 --- !u!4 &2055383390
 Transform:
   m_ObjectHideFlags: 0

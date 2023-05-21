@@ -38,6 +38,7 @@ public enum Stat
 	SuccessRate,
 	SuspicionGain,
 	IncomeGain,
-	Unlock
+	Unlock,
+	Rank
 }
 

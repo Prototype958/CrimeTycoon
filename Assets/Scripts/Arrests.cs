@@ -26,7 +26,8 @@ public class Arrests
 			Debug.Log("go directly to jail");
 			CriminalManager.Instance.OnArrest(criminal);
 
-			_notifications.LogNotification($"{criminal.Name} has been arrested!");
+
+			_notifications.LogNotification($"{criminal.Name} has been arrested!", Message.MessageType.Alert);
 			return true;
 		}
 		return false;

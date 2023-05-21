@@ -22,7 +22,7 @@ public class RosterDisplay : MonoBehaviour
 	private void AddToDisplay(Criminal criminal)
 	{
 		RosterManager.Instance.UpdateCurrentRoster(criminal);
-		_notifications.LogNotification($"{criminal.Name} has joined the crew.");
+		_notifications.LogNotification($"{criminal.Name} has joined the crew.", Message.MessageType.Simple);
 
 		_displayCard = Instantiate(DisplayCardPrefab, this.gameObject.transform);
 		_displayCard._criminal = criminal;

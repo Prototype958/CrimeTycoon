@@ -27,8 +27,19 @@ public class UpgradeButton : MonoBehaviour
 	{
 		if (IncomeSystem.Instance.CanAfford(Upgrade.Cost) && ComparePrerequisites(Upgrade.GetPrerequisites()))
 		{
-			UpgradePurchased?.Invoke(Upgrade);
 			IncomeSystem.Instance.Spend(Upgrade.Cost);
+
+			// If not a job stat upgrade, complete upgrade here
+			// else send event to JobStatsClass to perform upgrades
+			if (Upgrade.GetStatsToUpgrade().Contains(Stat.Rank))
+			{
+				CriminalManager.Instance.UpgradeRecruitRank();
+			}
+			else
+			{
+				UpgradePurchased?.Invoke(Upgrade);
+			}
+
 
 			if (Upgrade.CheckForNextRank())
 				AssignUpgrade(Upgrade);

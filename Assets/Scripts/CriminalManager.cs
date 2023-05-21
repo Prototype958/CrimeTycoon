@@ -9,6 +9,9 @@ public class CriminalManager : MonoBehaviour
 	public static CriminalManager Instance;
 
 	[SerializeField] private StatDisplay DisplayCard;
+	[SerializeField] private int _recruitRank;
+
+	public int RecruitRank { get { return _recruitRank; } }
 
 	private List<string> SingleNameOptions;
 	private List<string> TwoNameOptions;
@@ -32,6 +35,11 @@ public class CriminalManager : MonoBehaviour
 	public Criminal BuildNewCriminal()
 	{
 		return new Criminal();
+	}
+
+	public void UpgradeRecruitRank()
+	{
+		_recruitRank++;
 	}
 
 	// If criminal is arrested close Large Stat Display window if open
