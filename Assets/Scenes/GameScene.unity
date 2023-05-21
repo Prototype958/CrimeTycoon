@@ -14258,7 +14258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cashDisplay: {fileID: 965377506}
-  _startingCash: 500
+  _startingCash: 1500
 --- !u!1 &1016855737
 GameObject:
   m_ObjectHideFlags: 0
