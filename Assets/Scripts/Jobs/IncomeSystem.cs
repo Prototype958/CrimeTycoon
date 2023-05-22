@@ -36,15 +36,6 @@ public class IncomeSystem : MonoBehaviour
 		JobsSystem.JobAttemptSuccess -= HandleJobIncome;
 	}
 
-	//
-	// This is really really ugly, please fix it
-	//
-	private void ModifyIncome(Job arg1, Stat arg2, float arg3, float cost)
-	{
-		_currentCash -= cost;
-		UpdatateCashDisplay();
-	}
-
 	public void Spend(float cost)
 	{
 		_currentCash -= cost;
@@ -72,7 +63,6 @@ public class IncomeSystem : MonoBehaviour
 	private float CalculateIncomeResult(float min, float max)
 	{
 		float result = Random.Range(min, max);
-		Debug.Log(result);
 		return result;
 	}
 }

@@ -11,7 +11,7 @@ public class CriminalManager : MonoBehaviour
 	[SerializeField] private StatDisplay DisplayCard;
 	[SerializeField] private int _recruitRank;
 
-	public int RecruitRank { get { return _recruitRank; } }
+	public int RecruitRank => _recruitRank;
 
 	private List<string> SingleNameOptions;
 	private List<string> TwoNameOptions;

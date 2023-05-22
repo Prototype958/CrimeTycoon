@@ -19,18 +19,16 @@ public class Criminal
 
 	public int Rank;
 
-	public int Power { get { return _powerValue; } }
-	public int Stealth { get { return _stealthValue; } }
-	public int Tech { get { return _techValue; } }
-	public int Charm { get { return _charmValue; } }
-	public string ID { get { return _guid; } }
+	public int Power => _powerValue;
+	public int Stealth => _stealthValue;
+	public int Tech => _techValue;
+	public int Charm => _charmValue;
+	public string ID => _guid;
 	public Job CurrentJob { get { return _currentJob; } set { _currentJob = value; } }
 
 	private int _powerValue, _stealthValue, _techValue, _charmValue;
 	private string _guid;
 	private Job _currentJob;
-
-	private int _specialBonus = 2;
 
 	public int Specialty;
 

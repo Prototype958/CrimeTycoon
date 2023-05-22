@@ -29,7 +29,6 @@ public class StatCard : MonoBehaviour
 
 	public void RecruitCriminal()
 	{
-		Debug.Log("Selected " + _criminal.Name);
 		RosterUpdated?.Invoke(_criminal);
 		Destroy(this.gameObject);
 	}

@@ -23,9 +23,7 @@ public class Arrests
 	{
 		if (_suspicion.Suspicion > _arrestThreshold)
 		{
-			Debug.Log("go directly to jail");
 			CriminalManager.Instance.OnArrest(criminal);
-
 
 			_notifications.LogNotification($"{criminal.Name} has been arrested!", Message.MessageType.Alert);
 			return true;
