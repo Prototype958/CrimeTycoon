@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UpgradeButton : MonoBehaviour
+public class UpgradeButton : MonoBehaviour, IComparable<UpgradeButton>
 {
 	public static event System.Action<UpgradeClass> UpgradePurchased;
 
@@ -59,5 +60,13 @@ public class UpgradeButton : MonoBehaviour
 		}
 
 		return true;
+	}
+
+	public int CompareTo(UpgradeButton other)
+	{
+		if (this.Upgrade.Cost > other.Upgrade.Cost)
+			return 1;
+		else
+			return -1;
 	}
 }

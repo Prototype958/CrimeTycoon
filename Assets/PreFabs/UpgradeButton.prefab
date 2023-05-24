@@ -580,3 +580,4 @@ MonoBehaviour:
   NameDisplay: {fileID: 6137596624490156088}
   CostDisplay: {fileID: 6137596624963020686}
   DescDisplay: {fileID: 6137596624215663155}
+  _sort: {fileID: 0}

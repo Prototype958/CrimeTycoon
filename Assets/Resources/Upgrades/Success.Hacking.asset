@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7db14b85dc3ab24db8b203bf3c4036e, type: 3}
-  m_Name: PickPocketSucsRate
+  m_Name: Success.Hacking
   m_EditorClassIdentifier: 
-  _name: PickPocket Success Rate
-  _cost: 120
-  _description: Sticky Tape
+  _name: Hacking Success Rate
+  _cost: 500
+  _description: Try an SQL Injection
   _isRepeatable: 1
   _rank: 1
-  _upgradeValue: 0.33
-  AffectedJobs: 01000000
+  _upgradeValue: 0.9
+  AffectedJobs: 02000000
   StatsToUpgrade: 05000000
-  preRequisites: []
+  preRequisites:
+  - {fileID: 11400000, guid: fe9f09277d56e2547808fc3eb67aa804, type: 2}

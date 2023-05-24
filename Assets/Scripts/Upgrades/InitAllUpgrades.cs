@@ -4,7 +4,7 @@ public class InitAllUpgrades : MonoBehaviour
 {
 	public UpgradeButton UpgradeButtonPrefab;
 
-	private Upgrade[] _allUpgrades;
+	private Upgrade[] _upgradeResources;
 
 	private void Awake()
 	{
@@ -13,10 +13,10 @@ public class InitAllUpgrades : MonoBehaviour
 
 	private void InitClass()
 	{
-		_allUpgrades = Resources.LoadAll<Upgrade>("Upgrades");
-		SortUpgradesByCost(_allUpgrades);
+		_upgradeResources = Resources.LoadAll<Upgrade>("Upgrades");
+		SortUpgradesByCost(_upgradeResources);
 
-		foreach (Upgrade u in _allUpgrades)
+		foreach (Upgrade u in _upgradeResources)
 		{
 			UpgradeClass upgrade = new UpgradeClass(u);
 			UpgradeButton button = Instantiate(UpgradeButtonPrefab, this.transform);
