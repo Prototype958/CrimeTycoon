@@ -13,6 +13,7 @@ public class CriminalManager : MonoBehaviour
 
 	public int RecruitRank => _recruitRank;
 
+	private List<string> PrefixNameOptions;
 	private List<string> SingleNameOptions;
 	private List<string> TwoNameOptions;
 	private List<string> ComplexNameOptions;
@@ -78,6 +79,12 @@ public class CriminalManager : MonoBehaviour
 
 	private void BuildNameLists()
 	{
+		if (PrefixNameOptions == null)
+		{
+			PrefixNameOptions = new List<string>();
+			PrefixNameOptions = ParseFile("Assets/Resources/PrefixNames.txt");
+		}
+
 		if (SingleNameOptions == null)
 		{
 			SingleNameOptions = new List<string>();
@@ -105,14 +112,14 @@ public class CriminalManager : MonoBehaviour
 		// 1 - Single name
 		//     pull from SingleNameOptions OR TwoNameOptions
 		// 2 - Double Name
-		//     Combine a SingleNameOptions with TwoNameoptions
+		//     Combine a SingleNameOptions with TwoNameoptions OR PrefixNameOptions with SingleNameOptions
 		// 3 - Complex Name
 		//     pull from SingleNameOptions OR TwoNameOptions AND ComplexNameOptions
 		int combo = Random.Range(1, 4);
 
 		if (combo == 1)
 		{
-			if (Random.Range(1, 2) == 1)
+			if (Random.Range(1, 3) == 1)
 			{
 				name += SingleNameOptions[Random.Range(0, SingleNameOptions.Count)];
 			}
@@ -123,9 +130,19 @@ public class CriminalManager : MonoBehaviour
 		}
 		else if (combo == 2)
 		{
-			name += SingleNameOptions[Random.Range(0, SingleNameOptions.Count)];
-			name += " ";
-			name += TwoNameOptions[Random.Range(0, TwoNameOptions.Count)];
+			if (Random.Range(1, 3) == 1)
+			{
+				name += SingleNameOptions[Random.Range(0, SingleNameOptions.Count)];
+				name += " ";
+				name += TwoNameOptions[Random.Range(0, TwoNameOptions.Count)];
+			}
+			else
+			{
+				name += PrefixNameOptions[Random.Range(0, PrefixNameOptions.Count)];
+				name += " ";
+				name += SingleNameOptions[Random.Range(0, SingleNameOptions.Count)];
+			}
+
 		}
 		else if (combo == 3)
 		{

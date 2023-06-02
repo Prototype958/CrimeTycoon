@@ -25,6 +25,6 @@ public class RosterDisplay : MonoBehaviour
 		_notifications.LogNotification($"{criminal.Name} has joined the crew.", Message.MessageType.Simple);
 
 		_displayCard = Instantiate(DisplayCardPrefab, this.gameObject.transform);
-		_displayCard._criminal = criminal;
+		_displayCard.Init(criminal);
 	}
 }

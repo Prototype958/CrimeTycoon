@@ -7,9 +7,10 @@ public class RosterCard : MonoBehaviour
 
 	[SerializeField] public Criminal _criminal;
 
-	public void Awake()
+	public void Init(Criminal criminal)
 	{
-		UpdateStatBlocks(_criminal);
+		_criminal = criminal;
+		UpdateStatBlocks(criminal);
 	}
 
 	private void UpdateStatBlocks(Criminal criminal)

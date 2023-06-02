@@ -18,8 +18,6 @@ public class StatCard : MonoBehaviour
 
 	private void Awake()
 	{
-		BackGroundImage = GetComponent<Image>();
-
 		BackGroundImage.sprite = sprite;
 		_criminal = CriminalManager.Instance.BuildNewCriminal();
 
